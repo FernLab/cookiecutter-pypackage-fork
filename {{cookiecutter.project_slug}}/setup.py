@@ -11,14 +11,20 @@ with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
 version = {}
-with open("enval/version.py") as version_file:
+with open("{{ cookiecutter.project_slug }}/version.py") as version_file:
     exec(version_file.read(), version)
 
-requirements = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0',{%- endif %} ]
+req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0',{%- endif %}]
 
-setup_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %} ]
+req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %}]
 
-test_requirements = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3',{%- endif %} ]
+req_test = ['coverage', 'nose', 'nose2', 'nose-htmloutput', {%- if cookiecutter.use_pytest == 'y' %} 'pytest>=3',{%- endif %} 'rednose', 'urlchecker']
+
+req_doc = ['sphinx-argparse', 'sphinx_rtd_theme', 'sphinx-autodoc-typehints']
+
+req_lint = ['flake8', 'pycodestyle', 'pydocstyle']
+
+req_dev = req_setup + req_test + req_doc + req_lint
 
 {%- set license_classifiers = {
     'MIT license': 'License :: OSI Approved :: MIT License',
@@ -53,7 +59,13 @@ setup(
         ],
     },
     {%- endif %}
-    install_requires=requirements,
+    extras_require = {
+        "doc": req_doc,
+        "test": req_test,
+        "lint": req_lint,
+        "dev": req_dev
+    },
+    install_requires=req,
 {%- if cookiecutter.open_source_license in license_classifiers %}
     license="{{ cookiecutter.open_source_license }}",
 {%- endif %}
@@ -62,9 +74,9 @@ setup(
     long_description = readme,
     name='{{ cookiecutter.project_slug }}',
     packages=find_packages(include=['{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}.*']),
-    setup_requires=setup_requirements,
+    setup_requires=req_setup,
     test_suite='tests',
-    tests_require=test_requirements,
+    tests_require=req_test,
     url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
     version=version['__version__'],
     zip_safe=False,

@@ -1,3 +1,11 @@
+{% set group = cookiecutter.gitlab_group_or_username -%}
+{% set subgroup = cookiecutter.gitlab_subgroup_name -%}
+{% set slug = cookiecutter.project_slug -%}
+{% if subgroup -%}
+    {%- set projecturl -%}{{ 'https://git.gfz-potsdam.de' }}/{{group}}/{{subgroup}}/{{slug}}{%- endset -%}
+{% else -%}
+    {%- set projecturl -%}{{ 'https://git.gfz-potsdam.de' }}/{{group}}/{{slug}}{%- endset -%}
+{% endif -%}
 #!/usr/bin/env python
 
 """The setup script."""
@@ -77,7 +85,7 @@ setup(
     setup_requires=req_setup,
     test_suite='tests',
     tests_require=req_test,
-    url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}',
+    url='{{ projecturl }}',
     version=version['__version__'],
     zip_safe=False,
 )

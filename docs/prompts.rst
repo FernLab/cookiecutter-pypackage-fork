@@ -17,6 +17,12 @@ email
 github_username
     Your GitHub username.
 
+gitlab_group_or_username
+    The GitLab group name or the user name where the repository will be created in.
+
+gitlab_subgroup_name
+    The GitLab subgroup name (if any) where the repository will be created in.
+
 project_name
     The name of your new Python package project. This is used in documentation, so spaces and any characters are fine here.
 

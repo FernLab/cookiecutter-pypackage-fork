@@ -21,15 +21,21 @@ def main(args=None):
     return 0
 {%- endif %}
 {%- if cookiecutter.command_line_interface|lower == 'argparse' %}
-def main():
-    """Console script for {{cookiecutter.project_slug}}."""
+def get_argparser():
+    """Get a console argument parser for {{ cookiecutter.project_name }}."""
     parser = argparse.ArgumentParser()
     parser.add_argument('_', nargs='*')
-    args = parser.parse_args()
 
-    print("Arguments: " + str(args._))
+    return parser
+
+
+def main():
+    argparser = get_argparser()
+    parsed_args = argparser.parse_args()
+
+    print("Arguments: " + str(parsed_args._))
     print("Replace this message by putting your code into "
-          "{{cookiecutter.project_slug}}.cli.main")
+          "bin.{{cookiecutter.project_slug}}_cli")
     return 0
 {%- endif %}
 

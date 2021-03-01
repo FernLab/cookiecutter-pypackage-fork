@@ -2,7 +2,7 @@
 
 context_dir="./context"
 dockerfile="{{ cookiecutter.project_slug }}_ci.docker"
-tag="{{ cookiecutter.project_slug }}_ci:0.1.0"
+tag="{{ cookiecutter.project_slug }}_ci:{{ cookiecutter.version }}"
 gitlab_runner="{{ cookiecutter.project_slug }}_gitlab_CI_runner"
 
 echo "#### Build runner docker image"

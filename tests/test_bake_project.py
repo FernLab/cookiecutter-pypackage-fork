@@ -297,7 +297,7 @@ def test_bake_with_console_script_cli(cookies):
     context = {'command_line_interface': 'click'}
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
-    module_path = os.path.join(project_dir, 'cli.py')
+    module_path = os.path.join(project_path, 'bin', '{{ cookiecutter.project_slug }}_cli.py')
     module_name = '.'.join([project_slug, 'cli'])
     spec = importlib.util.spec_from_file_location(module_name, module_path)
     cli = importlib.util.module_from_spec(spec)
@@ -318,7 +318,7 @@ def test_bake_with_argparse_console_script_cli(cookies):
     context = {'command_line_interface': 'argparse'}
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
-    module_path = os.path.join(project_dir, 'cli.py')
+    module_path = os.path.join(project_path, 'bin', '{{ cookiecutter.project_slug }}_cli.py')
     module_name = '.'.join([project_slug, 'cli'])
     spec = importlib.util.spec_from_file_location(module_name, module_path)
     cli = importlib.util.module_from_spec(spec)

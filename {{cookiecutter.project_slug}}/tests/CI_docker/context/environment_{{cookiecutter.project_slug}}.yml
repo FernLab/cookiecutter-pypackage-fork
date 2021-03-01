@@ -1,0 +1,24 @@
+name: {{ cookiecutter.project_slug }}
+
+channels: &id1
+  - conda-forge
+
+dependencies:
+  - python=3.*.*
+  - pip
+
+  - pip:
+    # doc requirements
+    - coverage
+    - flake8
+    - nose
+    - nose2
+    - nose-htmloutput
+    - pycodestyle
+    - pydocstyle
+    - pylint
+    - rednose
+    - sphinx-argparse
+    - sphinx_autodoc_typehints
+    - sphinx_rtd_theme
+    - urlchecker

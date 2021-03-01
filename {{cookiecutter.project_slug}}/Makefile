@@ -1,4 +1,4 @@
-.PHONY: clean clean-test clean-pyc clean-build docs help
+.PHONY: clean clean-test clean-pyc clean-build docs help nosetests
 .DEFAULT_GOAL := help
 
 define BROWSER_PYSCRIPT
@@ -44,11 +44,22 @@ clean-pyc: ## remove Python file artifacts
 clean-test: ## remove test and coverage artifacts
 	rm -fr .tox/
 	rm -f .coverage
+	rm -fr .coverage.*
 	rm -fr htmlcov/
 	rm -fr .pytest_cache
+	rm -fr nosetests.html
+	rm -fr nosetests.xml
 
 lint: ## check style with flake8
-	flake8 {{ cookiecutter.project_slug }} tests
+	flake8 --max-line-length=120 {{ cookiecutter.project_slug }} tests > ./tests/linting/flake8.log || \
+		(cat ./tests/linting/flake8.log && exit 1)
+	pycodestyle {{ cookiecutter.project_slug }} --exclude="*.ipynb,*.ipynb*" --max-line-length=120 > ./tests/linting/pycodestyle.log || \
+		(cat ./tests/linting/pycodestyle.log && exit 1)
+	-pydocstyle {{ cookiecutter.project_slug }} > ./tests/linting/pydocstyle.log || \
+		(cat ./tests/linting/pydocstyle.log && exit 1)
+
+urlcheck: ## check for dead URLs
+	urlchecker check . --file-types .py,.rst,.md,.json
 
 test: ## run tests quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
@@ -61,19 +72,28 @@ test-all: ## run tests on every Python version with tox
 	tox
 
 coverage: ## check code coverage quickly with the default Python
+	coverage erase
 {%- if cookiecutter.use_pytest == 'y' %}
 	coverage run --source {{ cookiecutter.project_slug }} -m pytest
 {%- else %}
-	coverage run --source {{ cookiecutter.project_slug }} setup.py test
+	coverage run --source {{ cookiecutter.project_slug }} bin setup.py test
 {%- endif %}
+	coverage combine 	# must be called in order to make coverage work in multiprocessing
 	coverage report -m
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
+nosetests: clean-test ## Runs nosetests with coverage, xUnit and nose-html-output
+	## - puts the coverage results in the folder 'htmlcov'
+	## - generates 'nosetests.html' (--with-html)
+	## - generates 'nosetests.xml' (--with-xunit) which is currently not visualizable by GitLab
+	nosetests -vv --with-coverage --cover-package={{ cookiecutter.project_slug }} --cover-erase --cover-html --cover-html-dir=htmlcov \
+		--with-html --with-xunit --rednose --force-color
+
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/{{ cookiecutter.project_slug }}.rst
 	rm -f docs/modules.rst
-	sphinx-apidoc -o docs/ {{ cookiecutter.project_slug }}
+	sphinx-apidoc {{ cookiecutter.project_slug }} -o docs/ --private --doc-project 'Python API reference'
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
@@ -91,3 +111,6 @@ dist: clean ## builds source and wheel package
 
 install: clean ## install the package to the active Python's site-packages
 	python setup.py install
+
+gitlab_CI_docker:  ## Build a docker image for CI use within gitlab
+	cd ./tests/CI_docker/; bash ./build_{{ cookiecutter.project_slug }}_testsuite_image.sh

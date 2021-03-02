@@ -26,7 +26,4 @@ At the command line, {{ cookiecutter.project_name }} provides the **{{ cookiecut
    :filename: ./../bin/{{ cookiecutter.project_slug }}_cli.py
    :func: get_argparser
    :prog: {{ cookiecutter.project_slug }}_cli.py
-
-
-----
 {%- endif %}

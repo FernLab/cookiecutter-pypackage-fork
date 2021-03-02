@@ -1,3 +1,13 @@
+{% set group = cookiecutter.gitlab_group_or_username -%}
+{% set subgroup = cookiecutter.gitlab_subgroup_name -%}
+{% set slug = cookiecutter.project_slug -%}
+{% if subgroup -%}
+    {%- set projecturl -%}{{ 'https://git.gfz-potsdam.de' }}/{{group}}/{{subgroup}}/{{slug}}{%- endset -%}
+    {%- set giturl -%}git@git.gfz-potsdam.de:{{group}}/{{subgroup}}/{{slug}}.git{%- endset -%}
+{% else -%}
+    {%- set projecturl -%}{{ 'https://git.gfz-potsdam.de' }}/{{group}}/{{slug}}{%- endset -%}
+    {%- set giturl -%}git@git.gfz-potsdam.de:{{group}}/{{slug}}.git{%- endset -%}
+{% endif -%}
 .. highlight:: shell
 
 ============
@@ -15,7 +25,7 @@ Types of Contributions
 Report Bugs
 ~~~~~~~~~~~
 
-Report bugs at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+Report bugs at {{ projecturl }}/issues.
 
 If you are reporting a bug, please include:
 
@@ -26,13 +36,13 @@ If you are reporting a bug, please include:
 Fix Bugs
 ~~~~~~~~
 
-Look through the GitHub issues for bugs. Anything tagged with "bug" and "help
+Look through the GitLab issues for bugs. Anything tagged with "bug" and "help
 wanted" is open to whoever wants to implement it.
 
 Implement Features
 ~~~~~~~~~~~~~~~~~~
 
-Look through the GitHub issues for features. Anything tagged with "enhancement"
+Look through the GitLab issues for features. Anything tagged with "enhancement"
 and "help wanted" is open to whoever wants to implement it.
 
 Write Documentation
@@ -45,7 +55,7 @@ articles, and such.
 Submit Feedback
 ~~~~~~~~~~~~~~~
 
-The best way to send feedback is to file an issue at https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/issues.
+The best way to send feedback is to file an issue at {{ projecturl }}/issues.
 
 If you are proposing a feature:
 
@@ -54,15 +64,16 @@ If you are proposing a feature:
 * Remember that this is a volunteer-driven project, and that contributions
   are welcome :)
 
-Get Started!
-------------
+Commit Changes
+--------------
 
-Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for local development.
+How to
+~~~~~~
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitHub.
+1. Fork the `{{ cookiecutter.project_slug }}` repo on GitLab.
 2. Clone your fork locally::
 
-    $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
+    $ git clone {{ giturl }}
 
 3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
 
@@ -79,31 +90,55 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
 5. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox::
 
-    $ flake8 {{ cookiecutter.project_slug }} tests
-    $ python setup.py test or pytest
+    $ make lint
+    $ python -m unittest
     $ tox
 
    To get flake8 and tox, just pip install them into your virtualenv.
 
-6. Commit your changes and push your branch to GitHub::
+6. Commit your changes and push your branch to GitLab::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
-7. Submit a pull request through the GitHub website.
+7. Submit a merge request through the GitLab website.
 
-Pull Request Guidelines
------------------------
+Sign your commits
+~~~~~~~~~~~~~~~~~
+
+Please note that our license terms only allow signed commits.
+A guideline how to sign your work can be found here: https://git-scm.com/book/en/v2/Git-Tools-Signing-Your-Work
+
+If you are using the PyCharm IDE, the `Commit changes` dialog has an option called `Sign-off commit` to
+automatically sign your work.
+
+
+License header
+~~~~~~~~~~~~~~
+
+If you commit new Python files, please note that they have to contain the following license header:
+
+.. code:: bash
+
+    # {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+    #
+    # Copyright (C) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
+    #
+    # This software was developed within the context [...]
+
+
+Merge Request Guidelines
+------------------------
 
 Before you submit a pull request, check that it meets these guidelines:
 
-1. The pull request should include tests.
-2. If the pull request adds functionality, the docs should be updated. Put
+1. The merge request should include tests.
+2. If the merge request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 3.5, 3.6, 3.7 and 3.8, and for PyPy. Check
-   https://travis-ci.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests
+3. The pull request should work for Python 3.6, 3.7, 3.8 and 3.9. Check
+   {{ projecturl }}/-/merge_requests
    and make sure that the tests pass for all supported Python versions.
 
 Tips
@@ -116,16 +151,3 @@ To run a subset of tests::
 {% else %}
     $ python -m unittest tests.test_{{ cookiecutter.project_slug }}
 {%- endif %}
-
-Deploying
----------
-
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
-
-$ bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.

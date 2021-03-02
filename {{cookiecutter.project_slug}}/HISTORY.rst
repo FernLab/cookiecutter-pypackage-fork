@@ -5,4 +5,4 @@ History
 {{ cookiecutter.version }} ({% now 'local' %})
 ------------------
 
-* First release on PyPI.
+* Package skeleton as created by https://github.com/danschef/cookiecutter-pypackage.

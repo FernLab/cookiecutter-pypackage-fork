@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""Version module for {{ cookiecutter.project_name }}."""
 
 {% if cookiecutter.open_source_license == 'MIT license' -%}
 # {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}

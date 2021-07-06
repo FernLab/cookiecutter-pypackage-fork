@@ -26,7 +26,7 @@ Status
 ------
 
 .. image:: {{ projecturl }}/badges/master/pipeline.svg
-        :target: {{ projecturl }}/commits/master
+        :target: {{ projecturl }}/pipelines
         :alt: Pipelines
 .. image:: {{ projecturl }}/badges/master/coverage.svg
         :target: {{ pagesurl }}/coverage/

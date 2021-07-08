@@ -178,7 +178,7 @@ setup(
         ],
     },
     {%- endif %}
-    extras_require = {
+    extras_require={
         "doc": req_doc,
         "test": req_test,
         "lint": req_lint,

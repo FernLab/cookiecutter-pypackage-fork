@@ -11,7 +11,7 @@ stages:
 test_{{ cookiecutter.project_slug }}:
   stage: test
   script:
-    - source /root/miniconda3/bin/activate ci_env
+    - source /root/mambaforge/bin/activate ci_env
 
     # run tests
     - make nosetests
@@ -31,7 +31,7 @@ test_{{ cookiecutter.project_slug }}:
 test_styles:
   stage: test
   script:
-    - source /root/miniconda3/bin/activate ci_env
+    - source /root/mambaforge/bin/activate ci_env
     - make lint
   artifacts:
     paths:
@@ -44,7 +44,7 @@ test_styles:
 test_urls:
   stage: test
   script:
-    - source /root/miniconda3/bin/activate ci_env
+    - source /root/mambaforge/bin/activate ci_env
     - pip install -U urlchecker
     - make urlcheck
   when: always
@@ -53,11 +53,10 @@ test_urls:
 test_{{ cookiecutter.project_slug }}_install:
   stage: test
   script:
-    - source /root/miniconda3/bin/activate
+    - source /root/mambaforge/bin/activate
 
-    # update conda and python
-    - conda update -n base -c conda-forge conda
-    # - conda update -c conda-forge python
+    # update base environment
+    - conda update -n base -c conda-forge --all
 
     # create {{ cookiecutter.project_slug }} environment from environment_{{ cookiecutter.project_slug }}.yml
     - conda env create --name {{ cookiecutter.project_slug }}_testinstall -f tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml

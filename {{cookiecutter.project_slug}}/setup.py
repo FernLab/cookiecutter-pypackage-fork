@@ -190,7 +190,7 @@ setup(
 {%- endif %}
     include_package_data=True,
     keywords='{{ cookiecutter.project_slug }}',
-    long_description = readme,
+    long_description=readme,
     name='{{ cookiecutter.project_slug }}',
     packages=find_packages(include=['{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}.*']),
     setup_requires=req_setup,

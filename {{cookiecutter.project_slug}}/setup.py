@@ -137,9 +137,21 @@ req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0
 
 req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %}]
 
-req_test = ['coverage', 'nose', 'nose2', 'nose-htmloutput', {%- if cookiecutter.use_pytest == 'y' %} 'pytest>=3',{%- endif %} 'rednose', 'urlchecker']
+req_test = [{%- if cookiecutter.use_pytest == 'y' %} 'pytest>=3',{%- endif %}, 'pytest-cov', 'pytest-reporter-html1', 'urlchecker']
 
-req_doc = ['sphinx-argparse', 'sphinx_rtd_theme', 'sphinx-autodoc-typehints']
+req_doc = [
+    'pydocstyle',
+    'sphinx>=4.1.1',
+    'sphinx-argparse',
+    'sphinx-autodoc-typehints',
+    'sphinxcontrib-httpdomain',
+    'sphinxcontrib-openapi',
+    'sphinxcontrib-serializinghtml',
+    'sphinxcontrib-websupport',
+    'sphinx_rtd_theme',
+    'sphinx-autodoc-typehints',
+    'twine'
+]
 
 req_lint = ['flake8', 'pycodestyle', 'pydocstyle']
 

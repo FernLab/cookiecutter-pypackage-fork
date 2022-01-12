@@ -40,7 +40,7 @@ Status
      :alt: Updates
 {% endif %}
 
-See also the latest coverage_ report and the nosetests_ HTML report.
+See also the latest coverage_ report and the pytest_ HTML report.
 
 
 Feature overview
@@ -64,4 +64,4 @@ This package was created with Cookiecutter_ and the `danschef/cookiecutter-pypac
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`danschef/cookiecutter-pypackage`: https://github.com/danschef/cookiecutter-pypackage
 .. _coverage: {{ pagesurl }}/coverage/
-.. _nosetests: {{ pagesurl }}/nosetests_reports/nosetests.html
+.. _pytest: {{ pagesurl }}/tests_reports/report.html

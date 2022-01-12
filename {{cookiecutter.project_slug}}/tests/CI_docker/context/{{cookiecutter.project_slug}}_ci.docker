@@ -8,6 +8,6 @@ COPY *.yml /root/
 RUN /bin/bash -i -c "\
     source /root/mambaforge/bin/activate; \
     mamba update -n base -c conda-forge --all; \
-    conda activate {{ cookiecutter.project_slug }}; \
+    conda activate ci_env; \
     mamba env update -n ci_env -f /root/environment_{{ cookiecutter.project_slug }}.yml; \
     rm -rf /root/mambaforge/pkgs"

@@ -2,7 +2,14 @@
 
 context_dir="./context"
 dockerfile="{{ cookiecutter.project_slug }}_ci.docker"
-tag="{{ cookiecutter.project_slug }}_ci:{{ cookiecutter.version }}"
+python_script='
+version = {}
+with open("../../sentinel2_api/version.py") as version_file:
+    exec(version_file.read(), version)
+print(version["__version__"])
+'
+version=`python -c "$python_script"`
+tag="{{ cookiecutter.project_slug }}_ci:$version"
 gitlab_runner="{{ cookiecutter.project_slug }}_gitlab_CI_runner"
 
 echo "#### Build runner docker image"

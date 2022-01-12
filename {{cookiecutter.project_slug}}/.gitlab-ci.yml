@@ -79,7 +79,7 @@ test_{{ cookiecutter.project_slug }}_install:
     - ls
     - python -c "import {{ cookiecutter.project_slug }}; print({{ cookiecutter.project_slug }})"
   only:
-    - master
+    - main
 
 
 pages:  # this job must be called 'pages' to advise GitLab to upload content to GitLab Pages
@@ -115,4 +115,4 @@ pages:  # this job must be called 'pages' to advise GitLab to upload content to 
       - public
     expire_in: 30 days
   only:
-    - master
+    - main

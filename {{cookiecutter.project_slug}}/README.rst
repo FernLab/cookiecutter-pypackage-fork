@@ -25,10 +25,10 @@
 Status
 ------
 
-.. image:: {{ projecturl }}/badges/master/pipeline.svg
+.. image:: {{ projecturl }}/badges/main/pipeline.svg
         :target: {{ projecturl }}/pipelines
         :alt: Pipelines
-.. image:: {{ projecturl }}/badges/master/coverage.svg
+.. image:: {{ projecturl }}/badges/main/coverage.svg
         :target: {{ pagesurl }}/coverage/
         :alt: Coverage
 .. image:: https://img.shields.io/static/v1?label=Documentation&message=GitLab%20Pages&color=orange
@@ -53,7 +53,7 @@ History / Changelog
 -------------------
 
 You can find the protocol of recent changes in the {{ cookiecutter.project_name }} package
-`here <{{ projecturl }}/-/blob/master/HISTORY.rst>`__.
+`here <{{ projecturl }}/-/blob/main/HISTORY.rst>`__.
 
 
 Credits

@@ -28,7 +28,7 @@ docker run \
     gitlab/gitlab-runner:latest
 
 # register the runner at the corresponding GitLab repository via a registration-token
-echo "#### Register container at gitlab, get token here https://git.gfz-potsdam.de/<group>/{{ cookiecutter.project_slug }}/-/settings/ci_cd
+echo "#### Register container at gitlab, get token here https://git.gfz-potsdam.de/<group>/{{ cookiecutter.project_slug }}/-/settings/ci_cd"
 read -p "Please enter gitlab token: " token
 echo ""
 read -p "Please enter gitlab runner name: " runner_name

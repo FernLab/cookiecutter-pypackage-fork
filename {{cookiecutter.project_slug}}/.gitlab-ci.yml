@@ -37,7 +37,7 @@ test_{{ cookiecutter.project_slug }}:
 test_styles:
   stage: test
   script:
-    - source /root/mambaforge/bin/activate {{ cookiecutter.project_slug }}
+    - source /root/mambaforge/bin/activate ci_env
     - make lint
   artifacts:
     paths:
@@ -50,7 +50,7 @@ test_styles:
 test_urls:
   stage: test
   script:
-    - source /root/mambaforge/bin/activate {{ cookiecutter.project_slug }}
+    - source /root/mambaforge/bin/activate ci_env
     - pip install -U urlchecker
     - make urlcheck
   when: always

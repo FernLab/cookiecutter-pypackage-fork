@@ -140,7 +140,6 @@ req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %
 req_test = [{%- if cookiecutter.use_pytest == 'y' %} 'pytest>=3', 'pytest-cov', 'pytest-reporter-html1',{%- endif %}, 'urlchecker']
 
 req_doc = [
-    'pydocstyle',
     'sphinx>=4.1.1',
     'sphinx-argparse',
     'sphinx-autodoc-typehints',

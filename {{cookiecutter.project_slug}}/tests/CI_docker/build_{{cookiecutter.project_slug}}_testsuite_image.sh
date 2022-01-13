@@ -4,7 +4,7 @@ context_dir="./context"
 dockerfile="{{ cookiecutter.project_slug }}_ci.docker"
 python_script='
 version = {}
-with open("../../sentinel2_api/version.py") as version_file:
+with open("../../{{ cookiecutter.project_slug }}/version.py") as version_file:
     exec(version_file.read(), version)
 print(version["__version__"])
 '

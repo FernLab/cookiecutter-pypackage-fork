@@ -96,10 +96,10 @@ pytest: clean-test ## Runs pytest with coverage and creates coverage and test re
 		--tb=short \
 		--cov=heatr_homo \
 		--cov-report html:htmlcov \
-        --cov-report term-missing \
-        --cov-report xml:coverage.xml \
-        --template=html1/index.html --report=report.html \
-        --junitxml report.xml
+		--cov-report term-missing \
+		--cov-report xml:coverage.xml \
+		--template=html1/index.html --report=report.html \
+		--junitxml report.xml
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/{{ cookiecutter.project_slug }}.rst

@@ -144,12 +144,7 @@ req_doc = [
     'sphinx>=4.1.1',
     'sphinx-argparse',
     'sphinx-autodoc-typehints',
-    'sphinxcontrib-httpdomain',
-    'sphinxcontrib-openapi',
-    'sphinxcontrib-serializinghtml',
-    'sphinxcontrib-websupport',
     'sphinx_rtd_theme',
-    'sphinx-autodoc-typehints',
     'twine'
 ]
 

@@ -31,7 +31,3 @@ dependencies:
     - sphinx-argparse
     - sphinx_autodoc_typehints
     - sphinx_rtd_theme
-    - sphinxcontrib-serializinghtml
-    - sphinxcontrib-websupport
-    - sphinxcontrib-httpdomain
-    - sphinxcontrib-openapi

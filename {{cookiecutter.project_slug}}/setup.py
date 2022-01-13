@@ -143,13 +143,12 @@ req_doc = [
     'sphinx>=4.1.1',
     'sphinx-argparse',
     'sphinx-autodoc-typehints',
-    'sphinx_rtd_theme',
-    'twine'
+    'sphinx_rtd_theme'
 ]
 
 req_lint = ['flake8', 'pycodestyle', 'pydocstyle']
 
-req_dev = req_setup + req_test + req_doc + req_lint
+req_dev = ['twine'] + req_setup + req_test + req_doc + req_lint
 
 {%- set license_classifiers = {
     'MIT license': 'License :: OSI Approved :: MIT License',

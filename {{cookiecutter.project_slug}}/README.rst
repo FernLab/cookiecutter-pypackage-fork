@@ -64,4 +64,4 @@ This package was created with Cookiecutter_ and the `danschef/cookiecutter-pypac
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`danschef/cookiecutter-pypackage`: https://github.com/danschef/cookiecutter-pypackage
 .. _coverage: {{ pagesurl }}/coverage/
-.. _pytest: {{ pagesurl }}/tests_reports/report.html
+.. _pytest: {{ pagesurl }}/test_reports/report.html

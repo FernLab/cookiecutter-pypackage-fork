@@ -137,13 +137,18 @@ req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0
 
 req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %}]
 
-req_test = ['coverage', 'nose', 'nose2', 'nose-htmloutput', {%- if cookiecutter.use_pytest == 'y' %} 'pytest>=3',{%- endif %} 'rednose', 'urlchecker']
+req_test = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3', 'pytest-cov', 'pytest-reporter-html1'{%- endif %}, 'urlchecker']
 
-req_doc = ['sphinx-argparse', 'sphinx_rtd_theme', 'sphinx-autodoc-typehints']
+req_doc = [
+    'sphinx>=4.1.1',
+    'sphinx-argparse',
+    'sphinx-autodoc-typehints',
+    'sphinx_rtd_theme'
+]
 
 req_lint = ['flake8', 'pycodestyle', 'pydocstyle']
 
-req_dev = req_setup + req_test + req_doc + req_lint
+req_dev = ['twine'] + req_setup + req_test + req_doc + req_lint
 
 {%- set license_classifiers = {
     'MIT license': 'License :: OSI Approved :: MIT License',
@@ -156,7 +161,7 @@ req_dev = req_setup + req_test + req_doc + req_lint
 setup(
     author="{{ cookiecutter.full_name.replace('\"', '\\\"') }}",
     author_email='{{ cookiecutter.email }}',
-    python_requires='>=3.6',
+    python_requires='>=3.7',
     classifiers=[
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -165,10 +170,10 @@ setup(
 {%- endif %}
         'Natural Language :: English',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10'
     ],
     description="{{ cookiecutter.project_short_description }}",
     {%- if 'no' not in cookiecutter.command_line_interface|lower %}

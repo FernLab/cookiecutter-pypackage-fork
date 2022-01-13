@@ -8,17 +8,26 @@ dependencies:
   - pip
 
   - pip:
-    # doc requirements
-    - coverage
+    # setup requirements
+    - tox
+
+    # test requirements
+    - pytest
+    - pytest-cov
+    - pytest-reporter-html1
+    - urlchecker
+
+    # lint requirements
     - flake8
-    - nose
-    - nose2
-    - nose-htmloutput
     - pycodestyle
     - pydocstyle
     - pylint
-    - rednose
+
+    # doc requirements
+    - sphinx>=4.1.1
     - sphinx-argparse
     - sphinx_autodoc_typehints
     - sphinx_rtd_theme
-    - urlchecker
+
+    # deployment requirements
+    - twine

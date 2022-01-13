@@ -2,7 +2,14 @@
 
 context_dir="./context"
 dockerfile="{{ cookiecutter.project_slug }}_ci.docker"
-tag="{{ cookiecutter.project_slug }}_ci:{{ cookiecutter.version }}"
+python_script='
+version = {}
+with open("../../{{ cookiecutter.project_slug }}/version.py") as version_file:
+    exec(version_file.read(), version)
+print(version["__version__"])
+'
+version=`python -c "$python_script"`
+tag="{{ cookiecutter.project_slug }}_ci:$version"
 gitlab_runner="{{ cookiecutter.project_slug }}_gitlab_CI_runner"
 
 echo "#### Build runner docker image"
@@ -28,7 +35,7 @@ docker run \
     gitlab/gitlab-runner:latest
 
 # register the runner at the corresponding GitLab repository via a registration-token
-echo "#### Register container at gitlab, get token here https://git.gfz-potsdam.de/<group>/{{ cookiecutter.project_slug }}/-/settings/ci_cd
+echo "#### Register container at gitlab, get token here https://git.gfz-potsdam.de/<group>/{{ cookiecutter.project_slug }}/-/settings/ci_cd"
 read -p "Please enter gitlab token: " token
 echo ""
 read -p "Please enter gitlab runner name: " runner_name

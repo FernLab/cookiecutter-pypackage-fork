@@ -9,9 +9,6 @@ dependencies:
 
   - pip:
     # setup requirements
-    - bump2version
-    - wheel
-    - watchdog
     - tox
 
     # test requirements

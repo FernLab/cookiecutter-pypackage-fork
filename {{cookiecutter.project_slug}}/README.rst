@@ -59,9 +59,9 @@ You can find the protocol of recent changes in the {{ cookiecutter.project_name 
 Credits
 -------
 
-This package was created with Cookiecutter_ and the `danschef/cookiecutter-pypackage`_ project template.
+This package was created with Cookiecutter_ and the `fernlab/cookiecutter-pypackage`_ project template.
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`danschef/cookiecutter-pypackage`: https://github.com/danschef/cookiecutter-pypackage
+.. _`fernlab/cookiecutter-pypackage`: https://github.com/fernlab/cookiecutter-pypackage
 .. _coverage: {{ pagesurl }}/coverage/
 .. _pytest: {{ pagesurl }}/test_reports/report.html

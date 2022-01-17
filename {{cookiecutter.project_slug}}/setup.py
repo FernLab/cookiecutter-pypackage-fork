@@ -133,7 +133,7 @@ version = {}
 with open("{{ cookiecutter.project_slug }}/version.py") as version_file:
     exec(version_file.read(), version)
 
-req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0',{%- endif %}]
+req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0',{%- endif %}, 'fastapi', 'requests', 'uvicorn']
 
 req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %}]
 
@@ -143,6 +143,10 @@ req_doc = [
     'sphinx>=4.1.1',
     'sphinx-argparse',
     'sphinx-autodoc-typehints',
+    'sphinxcontrib-httpdomain',
+    'sphinxcontrib-openapi',
+    'sphinxcontrib-serializinghtml',
+    'sphinxcontrib-websupport',
     'sphinx_rtd_theme'
 ]
 

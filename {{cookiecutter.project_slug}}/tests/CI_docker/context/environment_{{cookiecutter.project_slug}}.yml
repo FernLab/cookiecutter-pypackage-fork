@@ -6,6 +6,8 @@ channels: &id1
 dependencies:
   - python=3.*.*
   - pip
+  - fastapi
+  - uvicorn
 
   - pip:
     # setup requirements
@@ -28,6 +30,13 @@ dependencies:
     - sphinx-argparse
     - sphinx_autodoc_typehints
     - sphinx_rtd_theme
+    - sphinxcontrib-serializinghtml
+    - sphinxcontrib-websupport
+    - sphinxcontrib-httpdomain
+    - sphinxcontrib-openapi
 
     # deployment requirements
     - twine
+
+    # module requirements
+    - requests

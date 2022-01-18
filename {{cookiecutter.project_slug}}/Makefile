@@ -60,7 +60,7 @@ lint: ## check style with flake8
 		(cat ./tests/linting/pydocstyle.log && exit 1)
 
 urlcheck: ## check for dead URLs
-	urlchecker check . --file-types .py,.rst,.md,.json
+	urlchecker check . --file-types .py,.rst,.md,.json \
 	--exclude-urls \
             http://localhost:3000
 

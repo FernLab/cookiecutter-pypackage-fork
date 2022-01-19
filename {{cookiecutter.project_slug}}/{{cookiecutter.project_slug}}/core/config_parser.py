@@ -1,10 +1,10 @@
+import os
 from configparser import ConfigParser
 
-CONFIG_FILE = "./core/config.ini"
+CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.ini')
 config = ConfigParser()
 
 if not config.read(CONFIG_FILE):
-    raise Exception(
-        f"Error reading Configuration File => {CONFIG_FILE} Not Found!.")
+    raise FileNotFoundError("Config.ini file not found!.")
 else:
     config.read(CONFIG_FILE)

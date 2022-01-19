@@ -20,5 +20,5 @@ def home():
     try:
         return {'msg': f'{APP_NAME} APIs is working. Use /docs or /redoc to see the documentation.'}
 
-    except Exception as e:
+    except Exception as e: # pragma: no cover
         return {'msg': f'Unexpected Error => {e}'}

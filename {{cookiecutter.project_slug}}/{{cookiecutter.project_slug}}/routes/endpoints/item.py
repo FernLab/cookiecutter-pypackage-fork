@@ -36,7 +36,7 @@ def get_items():
     try:
         return {"data": data}
 
-    except Exception as e:
+    except Exception as e: # pragma: no cover
         return JSONResponse(
             status_code=500,
             content={"msg": f"Internal Server Error => {e}"})
@@ -63,7 +63,7 @@ def get_item_by_id(id: str):
 
         return {"data": item}
 
-    except Exception as e:
+    except Exception as e: # pragma: no cover
         return JSONResponse(
             status_code=500,
             content={"msg": f"Internal Server Error => {e}"})

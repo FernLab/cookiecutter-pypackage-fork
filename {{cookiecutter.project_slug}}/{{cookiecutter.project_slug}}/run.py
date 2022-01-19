@@ -7,7 +7,7 @@ import core.env as environment
 APP_ADDRESS = config['app']['app_address']
 APP_PORT = int(config['app']['app_port'])
 
-if __name__ == "__main__":
+if __name__ == "__main__":   # pragma: no cover
     if environment.LEVEL_OF_DEVELOPMENT == 'production':
         uvicorn.run("create_app:app", host=APP_ADDRESS,
                     port=APP_PORT, reload=False)

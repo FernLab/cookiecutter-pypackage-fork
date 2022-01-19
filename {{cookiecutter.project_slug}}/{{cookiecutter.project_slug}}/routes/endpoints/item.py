@@ -7,11 +7,10 @@
 from fastapi import APIRouter
 from fastapi.responses import JSONResponse
 
-from core.config_parser import config
-import core.env as environment
-
-import schemas.general as general_schema
-import schemas.item as item_schema
+from {{ cookiecutter.project_slug }}.core.config_parser import config
+from {{ cookiecutter.project_slug }}.core import env as environment
+import {{ cookiecutter.project_slug }}.schemas.general as general_schema
+import {{ cookiecutter.project_slug }}.schemas.item as item_schema
 
 router = APIRouter()
 

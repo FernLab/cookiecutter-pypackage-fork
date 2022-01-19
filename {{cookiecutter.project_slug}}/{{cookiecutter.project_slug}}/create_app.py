@@ -6,10 +6,9 @@
 
 from fastapi import FastAPI
 
-from core.config_parser import config
-import core.env as environment
-
-from routes.api import api_router
+from {{ cookiecutter.project_slug }}.core.config_parser import config
+from {{ cookiecutter.project_slug }}.core import env as environment
+from {{ cookiecutter.project_slug }}.routes.api import api_router
 
 APP_NAME = config['meta']['app_name']
 APP_DESC = config['meta']['app_description']

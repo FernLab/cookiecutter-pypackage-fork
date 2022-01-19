@@ -6,6 +6,7 @@
 
 from pydantic import AnyHttpUrl, BaseSettings, validator
 from typing import List, Union
+
 from core.config_parser import config
 from db.connection import connection_url
 

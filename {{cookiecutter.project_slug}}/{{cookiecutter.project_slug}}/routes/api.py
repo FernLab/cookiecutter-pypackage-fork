@@ -5,8 +5,8 @@
 """
 
 from fastapi import APIRouter
-from routes.endpoints import home
-from routes.endpoints import item
+from {{ cookiecutter.project_slug }}.routes.endpoints import home
+from {{ cookiecutter.project_slug }}.routes.endpoints import item
 
 api_router = APIRouter()
 api_router.include_router(home.router)

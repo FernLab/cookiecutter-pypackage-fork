@@ -6,7 +6,7 @@
 
 import os
 
-from core.config_parser import config
+from {{ cookiecutter.project_slug }}.core.config_parser import config
 
 APP_DOMAIN = config['app']['app_address']
 

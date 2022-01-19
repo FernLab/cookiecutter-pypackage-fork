@@ -6,8 +6,8 @@
 
 from fastapi import APIRouter
 
-import schemas.general as general_schema
-from core.config_parser import config
+import {{ cookiecutter.project_slug }}.schemas.general as general_schema
+from {{ cookiecutter.project_slug }}.core.config_parser import config
 
 router = APIRouter()
 

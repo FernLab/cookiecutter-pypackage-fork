@@ -10,6 +10,7 @@ from pydantic import BaseModel, Field
 
 class GETItemsResponse(BaseModel):
     """Template for [GET] /item response."""
+
     data: Optional[list] = Field(title="data", description="A list of Items.")
 
     class Config:
@@ -28,7 +29,7 @@ class GETItemsResponse(BaseModel):
 
 class GETItemResponse(BaseModel):
     """Template for [GET] /item/{id} response."""
-    
+
     data: Optional[dict] = Field(
         title="data", description="An item data dictionary.")
 

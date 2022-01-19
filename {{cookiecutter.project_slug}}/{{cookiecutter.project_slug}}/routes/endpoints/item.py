@@ -34,12 +34,11 @@ data = [
                 500: {"model": general_schema.Message}}
             )
 def get_items():
-    """Returns a list of items."""
-
+    """Return a list of items."""
     try:
         return {"data": data}
 
-    except Exception as e: # pragma: no cover
+    except Exception as e:  # pragma: no cover
         return JSONResponse(
             status_code=500,
             content={"msg": f"Internal Server Error => {e}"})
@@ -53,8 +52,7 @@ def get_items():
                 500: {"model": general_schema.Message}}
             )
 def get_item_by_id(id: str):
-    """Returns an item from list by its id."""
-
+    """Return an item from list by its id."""
     try:
         item = [item for item in data if item["id"] == id]
 
@@ -66,7 +64,7 @@ def get_item_by_id(id: str):
 
         return {"data": item}
 
-    except Exception as e: # pragma: no cover
+    except Exception as e:  # pragma: no cover
         return JSONResponse(
             status_code=500,
             content={"msg": f"Internal Server Error => {e}"})

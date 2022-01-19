@@ -10,6 +10,7 @@ from typing import Optional
 
 class Message(BaseModel):
     """A general template for those responses contain a message."""
+
     msg: Optional[str] = Field(
         title="Message", description="Message from the API")
 

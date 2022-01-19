@@ -23,7 +23,7 @@ CONTACT_MAIL = config['maintainer']['mail']
 LICENSE_NAME = config['license']['name']
 # LICENSE_LINK = config['license']['link']
 
-if environment.SERVICE_NAMESPACE: # pragma: no cover
+if environment.SERVICE_NAMESPACE:  # pragma: no cover
     service_namespace = environment.SERVICE_NAMESPACE
     fastapi_app = FastAPI(
         title=APP_NAME,

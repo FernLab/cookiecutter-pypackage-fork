@@ -42,7 +42,7 @@ if environment.SERVICE_NAMESPACE: # pragma: no cover
 
     fastapi_app.include_router(api_router, prefix=f'/{service_namespace}')
 
-else: # pragma: no cover
+else:
     fastapi_app = FastAPI(
         title=APP_NAME,
         description=APP_DESC,

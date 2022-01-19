@@ -1,3 +1,9 @@
+"""
+{{ cookiecutter.project_slug }}.
+
+{{ cookiecutter.project_short_description }}.
+"""
+
 from pydantic import AnyHttpUrl, BaseSettings, validator
 from typing import List, Union
 from core.config_parser import config

@@ -1,4 +1,8 @@
-"""This is the python file that create an Instance for the FastAPI application."""
+"""
+{{ cookiecutter.project_slug }}.
+
+{{ cookiecutter.project_short_description }}.
+"""
 
 from fastapi import FastAPI
 

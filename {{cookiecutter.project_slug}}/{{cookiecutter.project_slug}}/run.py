@@ -1,4 +1,8 @@
-"""A test FastAPI application to reach a stable version for cookiecutter."""
+"""
+{{ cookiecutter.project_slug }}.
+
+{{ cookiecutter.project_short_description }}.
+"""
 
 import uvicorn
 from core.config_parser import config

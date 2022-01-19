@@ -1,3 +1,9 @@
+"""
+{{ cookiecutter.project_slug }}.
+
+{{ cookiecutter.project_short_description }}.
+"""
+
 import os
 from configparser import ConfigParser
 

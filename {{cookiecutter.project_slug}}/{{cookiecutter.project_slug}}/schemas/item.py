@@ -1,4 +1,8 @@
-"""A test FastAPI application to reach a stable version for cookiecutter."""
+"""
+{{ cookiecutter.project_slug }}.
+
+{{ cookiecutter.project_short_description }}.
+"""
 
 from typing import Optional
 from pydantic import BaseModel, Field

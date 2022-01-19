@@ -1,3 +1,5 @@
+"""A test FastAPI application to reach a stable version for cookiecutter."""
+
 import uvicorn
 from core.config_parser import config
 import core.env as environment

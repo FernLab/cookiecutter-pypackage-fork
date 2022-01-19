@@ -1,3 +1,5 @@
+"""A test FastAPI application to reach a stable version for cookiecutter."""
+
 from fastapi import APIRouter
 
 import schemas.general as general_schema

@@ -1,3 +1,5 @@
+"""A test FastAPI application to reach a stable version for cookiecutter."""
+
 from typing import Optional
 from pydantic import BaseModel, Field
 

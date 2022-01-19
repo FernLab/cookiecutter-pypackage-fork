@@ -9,11 +9,11 @@ from configparser import ConfigParser
 
 config = ConfigParser()
 
-try:
+try: 
     CONFIG_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.ini')
-    if not config.read(CONFIG_FILE):
+    if not config.read(CONFIG_FILE):  # pragma: no cover
         raise Exception("Empty configuration file!")
-    else:
+    else:  # pragma: no cover
         config.read(CONFIG_FILE)
-except Exception as e:
+except Exception as e:  # pragma: no cover
     raise Exception(f"Unable to read config.ini file => {e}!")

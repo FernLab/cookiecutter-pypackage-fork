@@ -24,6 +24,7 @@ class GETItemsResponse(BaseModel):
 
 class GETItemResponse(BaseModel):
     """Template for [GET] /item/{id} response."""
+    
     data: Optional[dict] = Field(
         title="data", description="An item data dictionary.")
 

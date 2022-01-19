@@ -115,3 +115,11 @@
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endif -%}
+
+import os
+
+from {{ cookiecutter.project_slug }}.core.config_parser import config
+
+os.environ['service_namespace'] = config['test']['service_namespace']
+os.environ['level_of_development'] = config['test']['level_of_development']
+os.environ['server_name'] = config['test']['server_name']

@@ -113,6 +113,12 @@
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endif %}
+
+import os
+from fastapi.testclient import TestClient
+from {{ cookiecutter.project_slug }}.create_app import app
+from {{ cookiecutter.project_slug }}.core.config_parser import config
+
 {% if cookiecutter.use_pytest == 'y' -%}
 import pytest
 {% else -%}
@@ -129,6 +135,58 @@ from {{ cookiecutter.bin }} import {{ cookiecutter.project_slug }}_cli
 
 {%- if cookiecutter.use_pytest == 'y' %}
 
+
+SERVICE_NAMESPACE = config['test']['service_namespace']
+
+
+class Test{{ cookiecutter.project_slug|title }}():
+
+    @classmethod
+    def setup_class(self):
+        """Set up test fixtures."""
+        self.app = TestClient(app)
+        self.endpoint_prefix = ''
+
+        if 'service_namespace' in os.environ and \
+                os.environ['service_namespace'] == SERVICE_NAMESPACE:
+            self.endpoint_prefix = f'{SERVICE_NAMESPACE}'
+
+    def teardown_class(self):
+        print("teardown_class called once for the class")
+
+    def setup_method(self):
+        print("setup_method called for every method")
+
+    def teardown_method(self):
+        print("teardown_method called for every method")
+
+    def test_api_home_200(self):
+        response = self.app.get(f"{self.endpoint_prefix}/")
+        assert response.status_code == 200
+
+    def test_api_home_404_url_not_found(self):
+        response = self.app.get(f"{self.endpoint_prefix}/NotFound")
+        assert response.status_code == 404
+
+    def test_api_items_200(self):
+        response = self.app.get(f"{self.endpoint_prefix}/item")
+        assert response.status_code == 200
+
+    def test_api_items_404_url_not_found(self):
+        response = self.app.get(f"{self.endpoint_prefix}/item_NotFound")
+        assert response.status_code == 404
+
+    def test_api_item_by_id_200(self):
+        response = self.app.get(f"{self.endpoint_prefix}/item/1")
+        assert response.status_code == 200
+
+    def test_api_item_by_id_404_not_found(self):
+        response = self.app.get(f"{self.endpoint_prefix}/item/5")
+        assert response.status_code == 404
+
+    def test_api_item_by_id_404_url_not_found(self):
+        response = self.app.get(f"{self.endpoint_prefix}/item_NotFound/5")
+        assert response.status_code == 404
 
 @pytest.fixture
 def response():

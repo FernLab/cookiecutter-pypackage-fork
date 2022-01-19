@@ -23,44 +23,38 @@ CONTACT_MAIL = config['maintainer']['mail']
 LICENSE_NAME = config['license']['name']
 # LICENSE_LINK = config['license']['link']
 
-if environment.SERVICE_NAMESPACE:  # pragma: no cover
+docs_url = '/docs'
+redoc_url = '/redoc'
+openapi_url = f'/{APP_DOC_NAME}.json'
+
+if environment.SERVICE_NAMESPACE:
     service_namespace = environment.SERVICE_NAMESPACE
-    fastapi_app = FastAPI(
-        title=APP_NAME,
-        description=APP_DESC,
-        version=APP_VERSION,
-        terms_of_service=APP_TERMS,
-        contact={
-            "name": CONTACT_NAME,
-            "url": CONTACT_LINK,
-            "email": CONTACT_MAIL,
-        },
-        license_info={
-            "name": LICENSE_NAME,
-            # "url": LICENSE_LINK
-        },
-        docs_url=f'/{service_namespace}/docs',
-        redoc_url=f'/{service_namespace}/redoc',
-        openapi_url=f'/{service_namespace}/{APP_DOC_NAME}.json')
+    docs_url = f'/{service_namespace}/docs'
+    redoc_url = f'/{service_namespace}/redoc'
+    openapi_url = f'/{service_namespace}/{APP_DOC_NAME}.json'
 
+fastapi_app = FastAPI(
+    title=APP_NAME,
+    description=APP_DESC,
+    version=APP_VERSION,
+    terms_of_service=APP_TERMS,
+    contact={
+        "name": CONTACT_NAME,
+        "url": CONTACT_LINK,
+        "email": CONTACT_MAIL,
+    },
+    license_info={
+        "name": LICENSE_NAME,
+        # "url": LICENSE_LINK
+    },
+    docs_url=docs_url,
+    redoc_url=redoc_url,
+    openapi_url=openapi_url)
+
+fastapi_app.include_router(api_router)
+
+if environment.SERVICE_NAMESPACE:
+    # service_namespace = environment.SERVICE_NAMESPACE
     fastapi_app.include_router(api_router, prefix=f'/{service_namespace}')
-
-else:
-    fastapi_app = FastAPI(
-        title=APP_NAME,
-        description=APP_DESC,
-        version=APP_VERSION,
-        terms_of_service=APP_TERMS,
-        contact={
-            "name": CONTACT_NAME,
-            "url": CONTACT_LINK,
-            "email": CONTACT_MAIL,
-        },
-        license_info={
-            "name": LICENSE_NAME,
-            # "url": LICENSE_LINK
-        }
-    )
-    fastapi_app.include_router(api_router)
 
 app = fastapi_app

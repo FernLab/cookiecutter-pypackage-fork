@@ -9,7 +9,7 @@ from configparser import ConfigParser
 
 config = ConfigParser()
 
-try: 
+try:
     CONFIG_FILE = os.path.join(os.path.dirname(
         os.path.abspath(__file__)), 'config.ini')
     if not config.read(CONFIG_FILE):  # pragma: no cover

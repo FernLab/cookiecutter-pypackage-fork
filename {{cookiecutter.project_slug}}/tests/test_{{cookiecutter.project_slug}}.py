@@ -188,6 +188,7 @@ class Test{{ cookiecutter.project_slug|title }}():
         response = self.app.get(f"{self.endpoint_prefix}/item_NotFound/5")
         assert response.status_code == 404
 
+
 @pytest.fixture
 def response():
     """Sample pytest fixture.

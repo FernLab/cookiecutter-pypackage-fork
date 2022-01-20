@@ -3,7 +3,8 @@
 """Tests for `{{ cookiecutter.project_slug }}` package."""
 
 {% if cookiecutter.open_source_license == 'MIT license' -%}
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #
@@ -27,7 +28,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 {% elif cookiecutter.open_source_license == 'BSD license' %}
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 # All rights reserved.
@@ -59,7 +61,8 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 {% elif cookiecutter.open_source_license == 'ISC license' -%}
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #
@@ -77,7 +80,8 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 {% elif cookiecutter.open_source_license == 'Apache Software License 2.0' -%}
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #
@@ -95,7 +99,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}  {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #

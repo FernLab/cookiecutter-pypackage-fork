@@ -1,7 +1,8 @@
 """Unit test package for {{ cookiecutter.project_slug }}."""
 {% if cookiecutter.open_source_license == 'MIT license' -%}
 
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #
@@ -26,7 +27,8 @@
 # SOFTWARE.
 {% elif cookiecutter.open_source_license == 'BSD license' %}
 
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 # All rights reserved.
@@ -59,7 +61,8 @@
 # OF THE POSSIBILITY OF SUCH DAMAGE.
 {% elif cookiecutter.open_source_license == 'ISC license' -%}
 
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #
@@ -78,7 +81,8 @@
 # PERFORMANCE OF THIS SOFTWARE.
 {% elif cookiecutter.open_source_license == 'Apache Software License 2.0' -%}
 
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #
@@ -97,7 +101,8 @@
 # limitations under the License.
 {% elif cookiecutter.open_source_license == 'GNU General Public License v3' -%}
 
-# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+# {{ cookiecutter.project_name }},
+# {{ cookiecutter.project_short_description }}
 #
 # Copyright (c) {% now 'local', '%Y' %}  {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
 #

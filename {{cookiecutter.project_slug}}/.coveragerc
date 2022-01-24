@@ -1,7 +1,7 @@
 # .coveragerc to control coverage.py
 [run]
 branch = False
-concurrency = multiprocessing
+concurrency = thread,gevent
 parallel = True
 omit = */site-packages/*,*/tests/*,*/.eggs/*
 

@@ -142,7 +142,7 @@ req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0
 
 req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner'{%- endif %}]
 
-req_test = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3', 'pytest-cov', 'pytest-reporter-html1'{%- endif %}, 'urlchecker']
+req_test = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3', 'pytest-cov', 'pytest-reporter-html1'{%- endif %}, 'urlchecker', 'gevent']
 
 req_doc = [
     'sphinx>=4.1.1',

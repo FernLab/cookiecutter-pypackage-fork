@@ -140,7 +140,7 @@ with open("{{ cookiecutter.project_slug }}/version.py") as version_file:
 
 req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0',{%- endif %} 'fastapi', 'requests', 'uvicorn']
 
-req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner',{%- endif %}]
+req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner'{%- endif %}]
 
 req_test = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3', 'pytest-cov', 'pytest-reporter-html1'{%- endif %}, 'urlchecker']
 

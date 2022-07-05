@@ -56,7 +56,7 @@ lint: ## check style with flake8
 		(cat ./tests/linting/flake8.log && exit 1)
 	pycodestyle {{ cookiecutter.project_slug }} --exclude="*.ipynb,*.ipynb*" --max-line-length=120 > ./tests/linting/pycodestyle.log || \
 		(cat ./tests/linting/pycodestyle.log && exit 1)
-	-pydocstyle {{ cookiecutter.project_slug }} > ./tests/linting/pydocstyle.log || \
+	pydocstyle {{ cookiecutter.project_slug }} > ./tests/linting/pydocstyle.log || \
 		(cat ./tests/linting/pydocstyle.log && exit 1)
 
 urlcheck: ## check for dead URLs

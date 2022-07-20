@@ -10,6 +10,7 @@ stages:
 
 test_{{ cookiecutter.project_slug }}:
   stage: test
+  coverage: '/TOTAL\s+\d+\s+\d+\s+(\d+%)/'
   script:
     - source /root/mambaforge/bin/activate ci_env
 

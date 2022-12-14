@@ -173,6 +173,7 @@ def test_bake_selecting_license(cookies):
         'Apache Software License 2.0':
             'Licensed under the Apache License, Version 2.0',
         'GNU General Public License v3': 'GNU GENERAL PUBLIC LICENSE',
+        'None': 'None'
     }
     for license, target_string in license_strings.items():
         with bake_in_temp_dir(

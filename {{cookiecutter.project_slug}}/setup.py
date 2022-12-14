@@ -120,6 +120,15 @@
 #
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
+{% elif cookiecutter.open_source_license == 'None' -%}
+
+# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+#
+# Copyright (c) {% now 'local', '%Y' %}  {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
+#
+# This software was developed within the context [...]
+#
+# This program is not yet licensed and used for internal development only.
 {% endif %}
 from setuptools import setup, find_packages
 
@@ -155,7 +164,8 @@ req_dev = ['twine'] + req_setup + req_test + req_doc + req_lint
     'BSD license': 'License :: OSI Approved :: BSD License',
     'ISC license': 'License :: OSI Approved :: ISC License (ISCL)',
     'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
-    'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)'
+    'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
+    'None': 'None'
 } %}
 
 setup(

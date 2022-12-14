@@ -13,8 +13,31 @@ Installation
 ============
 
 
-Using Anaconda or Miniconda (recommended)
------------------------------------------
+Using Mamba (recommended)
+-------------------------
+
+Using mamba_ (latest version recommended), {{ cookiecutter.project_name }} is installed as follows:
+
+
+1. Create virtual environment for {{ cookiecutter.project_slug }} (optional but recommended):
+
+   .. code-block:: bash
+
+    $ mamba create -c conda-forge --name {{ cookiecutter.project_slug }} python=3
+    $ mamba activate {{ cookiecutter.project_slug }}
+
+
+2. Then clone the {{ cookiecutter.project_name }} source code and install {{ cookiecutter.project_name }} and all dependencies from the environment_{{ cookiecutter.project_slug }}.yml file:
+
+   .. code-block:: bash
+
+    $ git clone {{ giturl }}
+    $ cd {{ cookiecutter.project_slug }}
+    $ mamba env update -n {{ cookiecutter.project_slug }} -f tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
+    $ pip install .
+
+Using Anaconda or Miniconda
+---------------------------
 
 Using conda_ (latest version recommended), {{ cookiecutter.project_name }} is installed as follows:
 
@@ -70,3 +93,4 @@ you through the process.
 .. _pip: https://pip.pypa.io
 .. _Python installation guide: http://docs.python-guide.org/en/latest/starting/installation/
 .. _conda: https://conda.io/docs
+.. _mamba: https://github.com/mamba-org/mamba

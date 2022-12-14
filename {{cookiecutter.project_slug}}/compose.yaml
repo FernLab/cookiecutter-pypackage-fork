@@ -1,0 +1,14 @@
+version: "3.3"
+
+services:
+  fastapi_boilerplate:
+    image: ${IMAGE_NAME}:${VERSION}
+    container_name: ${CONTAINER_NAME}
+    build: .
+    command: bash -c "mamba run --no-capture-output -n {{ cookiecutter.project_slug }} python run.py"
+    network_mode: host
+    restart: always
+    environment:
+      - DATA_DIRECTORY=${DATA_DIRECTORY}
+    volumes:
+      - ${VOLUME_DIR_HOST}:${VOLUME_DIR_CONTAINER}

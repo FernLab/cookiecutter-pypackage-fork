@@ -121,10 +121,9 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endif -%}
 
+from {{cookiecutter.project_slug}}.core.config_parser import config
 import os
 
-from {{ cookiecutter.project_slug }}.core.config_parser import config
-
 os.environ['service_namespace'] = config['test']['service_namespace']
-os.environ['level_of_development'] = config['test']['level_of_development']
-os.environ['server_name'] = config['test']['server_name']
+# os.environ['level_of_development'] = config['test']['level_of_development']
+# os.environ['server_name'] = config['test']['server_name']

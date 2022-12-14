@@ -23,7 +23,7 @@ Using mamba_ (latest version recommended), {{ cookiecutter.project_name }} is in
 
    .. code-block:: bash
 
-    $ mamba create -c conda-forge --name {{ cookiecutter.project_slug }} python=3
+    $ mamba env create -f tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
     $ mamba activate {{ cookiecutter.project_slug }}
 
 

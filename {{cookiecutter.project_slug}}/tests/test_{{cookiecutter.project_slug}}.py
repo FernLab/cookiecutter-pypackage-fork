@@ -133,7 +133,7 @@ from click.testing import CliRunner
 
 from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}  # noqa: F401 (imported but unused)
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
-from {{ cookiecutter.bin }} import {{ cookiecutter.project_slug }}_cli
+from {{ cookiecutter.{{ cookiecutter.project_slug }} }} import {{ cookiecutter.project_slug }}_cli
 {%- endif %}
 
 {%- if cookiecutter.use_pytest == 'y' %}
@@ -161,7 +161,7 @@ def test_command_line_interface():
     runner = CliRunner()
     result = runner.invoke({{ cookiecutter.project_slug }}_cli.main)
     assert result.exit_code == 0
-    assert 'bin.{{ cookiecutter.project_slug }}_cli.main' in result.output
+    assert '{{ cookiecutter.project_slug }}.{{ cookiecutter.project_slug }}_cli.main' in result.output
     help_result = runner.invoke({{ cookiecutter.project_slug }}_cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output

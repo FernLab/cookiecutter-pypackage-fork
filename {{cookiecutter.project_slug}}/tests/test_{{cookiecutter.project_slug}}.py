@@ -133,7 +133,7 @@ from click.testing import CliRunner
 
 from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}  # noqa: F401 (imported but unused)
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
-from {{ cookiecutter.{{ cookiecutter.project_slug }} }} import {{ cookiecutter.project_slug }}_cli
+from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}_cli
 {%- endif %}
 
 {%- if cookiecutter.use_pytest == 'y' %}

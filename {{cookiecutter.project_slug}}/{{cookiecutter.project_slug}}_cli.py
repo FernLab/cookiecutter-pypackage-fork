@@ -155,7 +155,7 @@ def main():
 
     print("Arguments: " + str(parsed_args._))
     print("Replace this message by putting your code into "
-          "bin.{{cookiecutter.project_slug}}_cli")
+          "{{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}_cli")
     return 0
 {%- endif %}
 

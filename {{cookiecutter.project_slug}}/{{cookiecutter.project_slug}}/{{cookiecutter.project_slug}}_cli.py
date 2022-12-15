@@ -150,6 +150,7 @@ def get_argparser():
 
 
 def main():
+    """Console script for {{cookiecutter.project_slug}}."""
     argparser = get_argparser()
     parsed_args = argparser.parse_args()
 

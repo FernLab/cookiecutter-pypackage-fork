@@ -114,3 +114,6 @@ ENV/
 *.iws
 ## mpeltonen/sbt-idea plugin
 .idea_modules/
+
+# Exclude the data_dir directory that is created once service is ran
+data_dir

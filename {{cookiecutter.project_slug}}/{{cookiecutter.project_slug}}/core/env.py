@@ -5,6 +5,7 @@
 """
 
 import os
+from pathlib import Path
 
 if 'DATA_DIRECTORY' in os.environ:
     DATA_DIR = os.environ['DATA_DIRECTORY']
@@ -23,3 +24,10 @@ if 'DATA_DIRECTORY' in os.environ:
 SERVICE_NAMESPACE = ''
 if 'service_namespace' in os.environ:  # pragma: no cover
     SERVICE_NAMESPACE = os.environ['service_namespace']
+
+    # In test mode (make pytest) the directory of the /data_dir will be created and managed
+    # in /tests directory automatically.
+    if os.environ['service_namespace'] == 'test-service':  # pragma: no cover
+        DATA_DIR = os.path.join(os.getcwd(), 'tests', os.getenv('DATA_DIRECTORY'))
+        if not os.path.isdir(DATA_DIR):
+            Path(DATA_DIR).mkdir(parents=True, exist_ok=True)

@@ -71,8 +71,7 @@ if __name__ == "__main__":
             HOST = '0.0.0.0'
             PORT = 4004
 
-    os.environ['DATA_DIRECTORY'] = os.path.join(
-        os.getcwd(), '{{ cookiecutter.project_slug }}', os.getenv('DATA_DIRECTORY'))
+    os.environ['DATA_DIRECTORY'] = os.path.join(os.getcwd(), os.getenv('DATA_DIRECTORY'))
 
     uvicorn.run("{{ cookiecutter.project_slug }}.create_app:app",
                 host=HOST, port=PORT, reload=True)

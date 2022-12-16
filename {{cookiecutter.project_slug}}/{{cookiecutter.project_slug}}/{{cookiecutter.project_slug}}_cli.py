@@ -118,6 +118,15 @@
 #
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
+{% elif cookiecutter.open_source_license == 'None' -%}
+
+# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+#
+# Copyright (c) {% now 'local', '%Y' %}  {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
+#
+# This software was developed within the context [...]
+#
+# This program is not yet licensed and used for internal development only.
 {% endif %}
 {%- if cookiecutter.command_line_interface|lower == 'argparse' %}
 import argparse
@@ -146,12 +155,13 @@ def get_argparser():
 
 
 def main():
+    """Console script for {{cookiecutter.project_slug}}."""
     argparser = get_argparser()
     parsed_args = argparser.parse_args()
 
     print("Arguments: " + str(parsed_args._))
     print("Replace this message by putting your code into "
-          "bin.{{cookiecutter.project_slug}}_cli")
+          "{{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}_cli")
     return 0
 {%- endif %}
 

@@ -117,6 +117,15 @@
 #
 # You should have received a copy of the GNU General Public License along with
 # this program.  If not, see <http://www.gnu.org/licenses/>.
+{% elif cookiecutter.open_source_license == 'None' -%}
+
+# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+#
+# Copyright (c) {% now 'local', '%Y' %}  {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
+#
+# This software was developed within the context [...]
+#
+# This program is not yet licensed and used for internal development only.
 {% endif %}
 
 import os
@@ -135,7 +144,7 @@ from click.testing import CliRunner
 
 from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}  # noqa: F401 (imported but unused)
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
-from {{ cookiecutter.bin }} import {{ cookiecutter.project_slug }}_cli
+from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}_cli
 {%- endif %}
 
 {%- if cookiecutter.use_pytest == 'y' %}
@@ -216,7 +225,7 @@ def test_command_line_interface():
     runner = CliRunner()
     result = runner.invoke({{ cookiecutter.project_slug }}_cli.main)
     assert result.exit_code == 0
-    assert 'bin.{{ cookiecutter.project_slug }}_cli.main' in result.output
+    assert '{{ cookiecutter.project_slug }}.{{ cookiecutter.project_slug }}_cli.main' in result.output
     help_result = runner.invoke({{ cookiecutter.project_slug }}_cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert '--help  Show this message and exit.' in help_result.output

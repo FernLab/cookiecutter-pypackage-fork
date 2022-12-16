@@ -121,9 +121,12 @@
 # this program.  If not, see <http://www.gnu.org/licenses/>.
 {% endif -%}
 
-from {{cookiecutter.project_slug}}.core.config_parser import config
 import os
+from dotenv import load_dotenv
+
+from {{cookiecutter.project_slug}}.core.config_parser import config
+
+# Load environments from .env file once we run the test functions.
+load_dotenv()
 
 os.environ['service_namespace'] = config['test']['service_namespace']
-# os.environ['level_of_development'] = config['test']['level_of_development']
-# os.environ['server_name'] = config['test']['server_name']

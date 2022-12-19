@@ -15,7 +15,9 @@ tag="{{ cookiecutter.project_slug }}_ci:$version"
 gitlab_runner="{{ cookiecutter.project_slug }}_gitlab_CI_runner"
 
 echo "#### Build runner docker image"
-docker rmi ${tag}
+if [[ "$(docker images ${tag} | grep ${tag} 2> /dev/null)" != "" ]]; then
+  docker rmi ${tag}
+fi
 docker build ${context_dir} \
     --no-cache \
     -f ${context_dir}/${dockerfile} \

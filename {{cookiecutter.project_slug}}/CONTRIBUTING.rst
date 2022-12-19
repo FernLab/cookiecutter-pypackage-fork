@@ -232,6 +232,14 @@ If you commit new Python files, please note that they have to contain the follow
     #
     # You should have received a copy of the GNU General Public License along with
     # this program.  If not, see <http://www.gnu.org/licenses/>.
+    {% elif cookiecutter.open_source_license == 'None' -%}
+    # {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+    #
+    # Copyright (c) {% now 'local', '%Y' %}  {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
+    #
+    # This software was developed within the context [...]
+    #
+    # This program is not yet licensed and used for internal development only.
     {% endif %}
 
 Merge Request Guidelines

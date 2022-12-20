@@ -23,7 +23,7 @@ Command line utilities
 At the command line, {{ cookiecutter.project_name }} provides the **{{ cookiecutter.project_slug }}_cli.py** command:
 
 .. argparse::
-   :filename: ./../bin/{{ cookiecutter.project_slug }}_cli.py
+   :filename: ./../{{ cookiecutter.project_slug }}/{{ cookiecutter.project_slug }}_cli.py
    :func: get_argparser
    :prog: {{ cookiecutter.project_slug }}_cli.py
 {%- endif %}

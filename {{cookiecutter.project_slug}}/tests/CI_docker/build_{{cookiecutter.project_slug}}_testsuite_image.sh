@@ -15,7 +15,9 @@ tag="{{ cookiecutter.project_slug }}_ci:$version"
 gitlab_runner="{{ cookiecutter.project_slug }}_gitlab_CI_runner"
 
 echo "#### Build runner docker image"
-docker rmi ${tag}
+if [[ "$(docker images ${tag} | grep ${tag} 2> /dev/null)" != "" ]]; then
+  docker rmi ${tag}
+fi
 docker build ${context_dir} \
     --no-cache \
     -f ${context_dir}/${dockerfile} \
@@ -27,8 +29,12 @@ docker build ${context_dir} \
 #       The runner uses a 'config.toml' configuration file at /etc/gitlab-runner within the container which can be
 #       modified through additional parameters of the 'gitlab-runner register' command.
 echo "#### Create gitlab-runner (daemon) container with tag; ${tag}"
-docker stop ${gitlab_runner}
-docker rm ${gitlab_runner}
+if [ "$(docker ps -qa -f name=${gitlab_runner})" ]; then
+    if [ "$(docker ps -q -f name=${gitlab_runner})" ]; then
+        docker stop ${gitlab_runner};
+    fi
+    docker rm ${gitlab_runner};
+fi
 docker run \
     -d \
     --name ${gitlab_runner} \

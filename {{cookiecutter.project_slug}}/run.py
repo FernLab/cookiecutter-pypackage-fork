@@ -28,7 +28,12 @@ if __name__ == "__main__":
 
         # In debug mode 
         elif application_scope == 'DEVELOPMENT':
-                PORT = 8008
+                try:
+                    PORT = int(os.getenv('PORT'))
+                    if not PORT:
+                        raise EnvironmentError('<PORT> environment needs to be set.')
+                except:
+                    raise EnvironmentError('Check .env file to see if you set <DATA_DIR> environment.')
                 data_dir = os.path.join(os.getcwd(), 'data_dir')
         else:
            raise ValueError(f'Unsupported value for the <API_SERVER_SCOPE> environment => {application_scope}')
@@ -40,7 +45,12 @@ if __name__ == "__main__":
             application_scope = os.getenv('API_SERVER_SCOPE')
 
             if application_scope == 'DEVELOPMENT':
-                PORT = 8008
+                try:
+                    PORT = int(os.getenv('PORT'))
+                    if not PORT:
+                        raise EnvironmentError('<PORT> environment needs to be set.')
+                except:
+                    raise EnvironmentError('Check .env file to see if you set <DATA_DIR> environment.')
                 data_dir = os.path.join(os.getcwd(), 'data_dir')
             else:
                 raise ValueError(f'Unsupported value for the <API_SERVER_SCOPE> environment => {application_scope}')

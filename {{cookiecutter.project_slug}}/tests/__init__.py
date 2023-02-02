@@ -139,3 +139,4 @@ from {{cookiecutter.project_slug}}.core.config_parser import config
 load_dotenv()
 
 os.environ['service_namespace'] = config['test']['service_namespace']
+os.environ['DATA_DIR'] = os.getcwd()

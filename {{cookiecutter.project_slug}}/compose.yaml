@@ -1,11 +1,11 @@
 version: "3.3"
 
 services:
-    fastapi_boilerplate:
+    _{{ cookiecutter.project_slug }}:
         image: ${API_IMAGE_NAME}:${VERSION}
         container_name: ${API_CONTAINER_NAME}
         build: .
-        command: bash -c "mamba run --no-capture-output -n fastapi_boilerplate python run.py"
+        command: bash -c "mamba run --no-capture-output -n {{ cookiecutter.project_slug }} python run.py"
         network_mode: host
         restart: always
         environment:

@@ -162,7 +162,7 @@ If you commit new Python files, please note that they have to contain the follow
     # defined below) has placed the following notice immediately following the
     # copyright notice for the Work:
     #
-    # Licensed under the EUPL
+    #         Licensed under the EUPL
     #
     # or has expressed by any other means his willingness to license under the EUPL.
     {% elif cookiecutter.open_source_license == 'BSD license' %}

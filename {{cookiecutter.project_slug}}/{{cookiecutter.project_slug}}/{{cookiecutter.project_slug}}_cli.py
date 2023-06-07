@@ -27,6 +27,25 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+{% elif cookiecutter.open_source_license == 'EUPL license' %}
+# {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
+#
+# Copyright (c) {% now 'local', '%Y' %}, {{ cookiecutter.full_name }} (GFZ Potsdam, {{ cookiecutter.email }})
+#
+# This software was developed within the context [...]
+#
+# This European Union Public License (the ‘EUPL’) applies to the Work (as defined
+# below) which is provided under the terms of this License. Any use of the Work,
+# other than as authorized under this License is prohibited (to the extent such
+# use is covered by a right of the copyright holder of the Work).
+
+# The Work is provided under the terms of this License when the Licensor (as
+# defined below) has placed the following notice immediately following the
+# copyright notice for the Work:
+#
+#         Licensed under the EUPL
+#
+# or has expressed by any other means his willingness to license under the EUPL.
 {% elif cookiecutter.open_source_license == 'BSD license' %}
 # {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
 #

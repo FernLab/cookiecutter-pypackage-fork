@@ -92,11 +92,7 @@ How to
 
     $ make pytest
     $ make lint
-<<<<<<< HEAD
     $ make urlcheck
-=======
-    $ make test
->>>>>>> adapt_to_gfz
     $ tox
 
    To get flake8 and tox, just pip install them into your virtualenv.

@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-.PHONY: clean clean-test clean-pyc clean-build docs help pytest
-=======
-.PHONY: clean clean-build clean-pyc clean-test coverage dist docs help install lint lint/flake8
+.PHONY: clean clean-build clean-pyc clean-test coverage dist docs help install lint
 
->>>>>>> upstream/master
 .DEFAULT_GOAL := help
 
 define BROWSER_PYSCRIPT
@@ -56,7 +52,6 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr coverage.xml
 	rm -fr .pytest_cache
 
-<<<<<<< HEAD
 lint: ## check style with flake8
 	flake8 --max-line-length=120 {{ cookiecutter.project_slug }} tests > ./tests/linting/flake8.log || \
 		(cat ./tests/linting/flake8.log && exit 1)
@@ -67,13 +62,6 @@ lint: ## check style with flake8
 
 urlcheck: ## check for dead URLs
 	urlchecker check . --file-types .py,.rst,.md,.json
-=======
-lint/flake8: ## check style with flake8
-	flake8 {{ cookiecutter.project_slug }} tests
->>>>>>> upstream/master
-
-
-lint: lint/flake8 ## check style
 
 test: ## run tests quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}

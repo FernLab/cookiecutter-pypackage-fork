@@ -251,7 +251,7 @@ def test_bake_with_no_console_script(cookies):
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
     found_project_files = os.listdir(project_dir)
-    assert "cli.py" not in found_project_files
+    assert "{{ cookiecutter.project_slug }}_cli.py" not in found_project_files
 
     setup_path = os.path.join(project_path, 'setup.py')
     with open(setup_path, 'r') as setup_file:
@@ -263,7 +263,7 @@ def test_bake_with_console_script_files(cookies):
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
     found_project_files = os.listdir(project_dir)
-    assert "cli.py" in found_project_files
+    assert "{{ cookiecutter.project_slug }}_cli.py" in found_project_files
 
     setup_path = os.path.join(project_path, 'setup.py')
     with open(setup_path, 'r') as setup_file:
@@ -290,8 +290,6 @@ def test_bake_with_console_script_cli(cookies):
     assert help_result.exit_code == 0
     assert 'Show this message' in help_result.output
 
-<<<<<<< HEAD
-
 def test_bake_with_argparse_console_script_cli(cookies):
     context = {'command_line_interface': 'argparse'}
     result = cookies.bake(extra_context=context)
@@ -311,5 +309,3 @@ def test_bake_with_argparse_console_script_cli(cookies):
     help_result = runner.invoke(cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert 'Show this message' in help_result.output
-=======
->>>>>>> adapt_to_gfz

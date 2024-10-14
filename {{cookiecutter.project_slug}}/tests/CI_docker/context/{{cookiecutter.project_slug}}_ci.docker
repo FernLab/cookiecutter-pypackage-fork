@@ -1,5 +1,5 @@
 # ref https://github.com/tebeka/pythonwise/blob/master/docker-miniconda/Dockerfile
-FROM  condaforge/miniforge3
+FROM condaforge/miniforge3
 
 # System packages
 RUN apt-get update -y && \

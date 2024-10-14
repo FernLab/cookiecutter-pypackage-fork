@@ -73,6 +73,9 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Dask worker cache
+dask-worker-space/
+
 # pyenv
 .python-version
 
@@ -114,3 +117,4 @@ ENV/
 *.iws
 ## mpeltonen/sbt-idea plugin
 .idea_modules/
+

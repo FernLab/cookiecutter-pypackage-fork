@@ -106,7 +106,6 @@ ENV/
 
 # IDE settings
 .vscode/
-<<<<<<< HEAD
 
 # IntelliJ Idea family of suites
 .idea
@@ -116,7 +115,4 @@ ENV/
 *.iws
 ## mpeltonen/sbt-idea plugin
 .idea_modules/
-=======
-.idea/
 
->>>>>>> upstream/master

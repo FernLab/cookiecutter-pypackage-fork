@@ -22,8 +22,15 @@
 {% endif %}
 
 
+<<<<<<< HEAD
 Status
 ------
+=======
+.. image:: https://readthedocs.org/projects/{{ cookiecutter.project_slug | replace("_", "-") }}/badge/?version=latest
+        :target: https://{{ cookiecutter.project_slug | replace("_", "-") }}.readthedocs.io/en/latest/?version=latest
+        :alt: Documentation Status
+{%- endif %}
+>>>>>>> upstream/master
 
 .. image:: {{ projecturl }}/badges/main/pipeline.svg
         :target: {{ projecturl }}/pipelines

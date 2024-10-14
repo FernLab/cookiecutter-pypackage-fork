@@ -91,8 +91,14 @@ How to
    tests, including testing other Python versions with tox::
 
     $ make lint
+<<<<<<< HEAD
     $ python -m unittest
     $ tox
+=======
+    $ make test
+    Or
+    $ make test-all
+>>>>>>> upstream/master
 
    To get flake8 and tox, just pip install them into your virtualenv.
 
@@ -256,3 +262,27 @@ To run a subset of tests::
 {% else %}
     $ python -m unittest tests.test_{{ cookiecutter.project_slug }}
 {%- endif %}
+<<<<<<< HEAD
+=======
+
+Deploying
+---------
+
+A reminder for the maintainers on how to deploy.
+Make sure all your changes are committed (including an entry in HISTORY.rst).
+Then run::
+
+$ bump2version patch # possible: major / minor / patch
+$ git push
+$ git push --tags
+
+Travis will then deploy to PyPI if tests pass.
+
+Code of Conduct
+---------------
+
+Please note that this project is released with a `Contributor Code of Conduct`_.
+By participating in this project you agree to abide by its terms.
+
+.. _`Contributor Code of Conduct`: CODE_OF_CONDUCT.rst
+>>>>>>> upstream/master

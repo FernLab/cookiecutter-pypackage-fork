@@ -5,6 +5,7 @@ import sys
 import subprocess
 import yaml
 import datetime
+import pytest
 from cookiecutter.utils import rmtree
 
 from click.testing import CliRunner
@@ -65,6 +66,9 @@ def test_year_compute_in_license_file(cookies):
 
 def project_info(result):
     """Get toplevel dir, project_slug, and project dir from baked cookies"""
+    assert result.exception is None
+    assert result.project.isdir()
+
     project_path = str(result.project)
     project_slug = os.path.split(project_path)[-1]
     project_dir = os.path.join(project_path, project_slug)
@@ -206,9 +210,7 @@ def test_using_pytest(cookies):
         lines = test_file_path.readlines()
         assert "import pytest" in ''.join(lines)
         # Test the new pytest target
-        run_inside_dir('python setup.py pytest', str(result.project)) == 0
-        # Test the test alias (which invokes pytest)
-        run_inside_dir('python setup.py test', str(result.project)) == 0
+        run_inside_dir('pytest', str(result.project)) == 0
 
 
 def test_not_using_pytest(cookies):
@@ -256,19 +258,7 @@ def test_bake_with_no_console_script(cookies):
 
 
 def test_bake_with_console_script_files(cookies):
-    context = {'command_line_interface': 'click'}
-    result = cookies.bake(extra_context=context)
-    project_path, project_slug, project_dir = project_info(result)
-    found_project_files = os.listdir(project_dir)
-    assert "cli.py" in found_project_files
-
-    setup_path = os.path.join(project_path, 'setup.py')
-    with open(setup_path, 'r') as setup_file:
-        assert 'entry_points' in setup_file.read()
-
-
-def test_bake_with_argparse_console_script_files(cookies):
-    context = {'command_line_interface': 'argparse'}
+    context = {'command_line_interface': 'Click'}
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
     found_project_files = os.listdir(project_dir)
@@ -280,7 +270,7 @@ def test_bake_with_argparse_console_script_files(cookies):
 
 
 def test_bake_with_console_script_cli(cookies):
-    context = {'command_line_interface': 'click'}
+    context = {'command_line_interface': 'Click'}
     result = cookies.bake(extra_context=context)
     project_path, project_slug, project_dir = project_info(result)
     module_path = os.path.join(project_path, 'bin', '{{ cookiecutter.project_slug }}_cli.py')
@@ -299,6 +289,7 @@ def test_bake_with_console_script_cli(cookies):
     assert help_result.exit_code == 0
     assert 'Show this message' in help_result.output
 
+<<<<<<< HEAD
 
 def test_bake_with_argparse_console_script_cli(cookies):
     context = {'command_line_interface': 'argparse'}
@@ -319,3 +310,5 @@ def test_bake_with_argparse_console_script_cli(cookies):
     help_result = runner.invoke(cli.main, ['--help'])
     assert help_result.exit_code == 0
     assert 'Show this message' in help_result.output
+=======
+>>>>>>> upstream/master

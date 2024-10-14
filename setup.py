@@ -6,12 +6,16 @@ setup(
     packages=[],
     version='0.1.0',
     description='Cookiecutter template for a Python package',
-    author='Audrey Roy Greenfeld',
+    author='Audrey M. Roy Greenfeld',
     license='BSD',
-    author_email='aroy@alum.mit.edu',
-    url='https://github.com/audreyr/cookiecutter-pypackage',
+    author_email='audrey@feldroy.com',
+    url='https://github.com/audreyfeldroy/cookiecutter-pypackage',
     keywords=['cookiecutter', 'template', 'package', ],
+<<<<<<< HEAD
     python_requires='>=3.7',
+=======
+    python_requires='>=3.10',
+>>>>>>> upstream/master
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
@@ -20,10 +24,16 @@ setup(
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
+<<<<<<< HEAD
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
+=======
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
+>>>>>>> upstream/master
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Software Development',

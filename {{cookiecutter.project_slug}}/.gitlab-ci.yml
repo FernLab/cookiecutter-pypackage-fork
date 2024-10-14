@@ -12,7 +12,7 @@ test_{{ cookiecutter.project_slug }}:
   stage: test
   coverage: '/TOTAL\s+\d+\s+\d+\s+(\d+%)/'
   script:
-    - source /root/mambaforge/bin/activate ci_env
+    - source activate ci_env
 
     # install missing dependencies on the CI container
     - mamba env update --name ci_env --file tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml  --prune
@@ -35,13 +35,14 @@ test_{{ cookiecutter.project_slug }}:
         path: coverage.xml
       junit: report.xml
     expire_in: 30 days
-    when: always
+  only:
+    - main
 
 
 test_styles:
   stage: test
   script:
-    - source /root/mambaforge/bin/activate ci_env
+    - source activate ci_env
     - make lint
   artifacts:
     paths:
@@ -54,7 +55,7 @@ test_styles:
 test_urls:
   stage: test
   script:
-    - source /root/mambaforge/bin/activate ci_env
+    - source activate ci_env
     - make urlcheck
   when: always
 
@@ -62,7 +63,7 @@ test_urls:
 test_{{ cookiecutter.project_slug }}_install:
   stage: test
   script:
-    - source /root/mambaforge/bin/activate
+    - source activate
 
     # update base environment
     - conda update -n base -c conda-forge --all

@@ -73,6 +73,9 @@ target/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+# Dask worker cache
+dask-worker-space/
+
 # pyenv
 .python-version
 
@@ -105,6 +108,7 @@ ENV/
 
 # IDE settings
 .vscode/
+<<<<<<< HEAD
 
 # IntelliJ Idea family of suites
 .idea
@@ -114,3 +118,7 @@ ENV/
 *.iws
 ## mpeltonen/sbt-idea plugin
 .idea_modules/
+=======
+.idea/
+
+>>>>>>> upstream/master

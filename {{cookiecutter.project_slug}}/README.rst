@@ -24,7 +24,6 @@
 
 Status
 ------
-
 .. image:: {{ projecturl }}/badges/main/pipeline.svg
         :target: {{ projecturl }}/pipelines
         :alt: Pipelines

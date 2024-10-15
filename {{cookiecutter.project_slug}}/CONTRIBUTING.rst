@@ -88,14 +88,11 @@ How to
    Now you can make your changes locally.
 
 5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+   tests::
 
     $ make pytest
     $ make lint
     $ make urlcheck
-    $ tox
-
-   To get flake8 and tox, just pip install them into your virtualenv.
 
 6. Commit your changes and push your branch to GitLab::
 
@@ -258,7 +255,7 @@ If you commit new Python files, please note that they have to contain the follow
     #
     # This software was developed within the context [...]
     #
-    # This program is not yet licensed and used for internal development only.
+    # This program is not yet licensed, it should only be used for internal development.
     {% endif %}
 
 Merge Request Guidelines

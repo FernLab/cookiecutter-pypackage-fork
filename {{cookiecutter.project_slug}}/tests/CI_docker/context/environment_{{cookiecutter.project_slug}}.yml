@@ -6,8 +6,6 @@ channels: &id1
 dependencies:
   - python=3.*.*
   - pip
-  # setup requirements
-  - tox
   # test requirements
   - pytest
   - pytest-cov

@@ -70,16 +70,14 @@ Commit Changes
 How to
 ~~~~~~
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitLab.
-2. Clone your fork locally::
+1. Clone the repository::
 
     $ git clone {{ giturl }}
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+2. Create an environment::
 
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
     $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
+    $ mamba env create -f {{ cookiecutter.project_slug }}/tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
 
 4. Create a branch for local development::
 
@@ -93,9 +91,7 @@ How to
     $ make pytest
     $ make lint
     $ make urlcheck
-    $ tox
 
-   To get flake8 and tox, just pip install them into your virtualenv.
 
 6. Commit your changes and push your branch to GitLab::
 

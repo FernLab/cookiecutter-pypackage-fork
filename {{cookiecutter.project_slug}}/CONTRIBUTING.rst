@@ -279,24 +279,7 @@ Tips
 
 To run a subset of tests::
 
-{% if cookiecutter.use_pytest == 'y' -%}
-    $ pytest tests.test_{{ cookiecutter.project_slug }}
-{% else %}
-    $ python -m unittest tests.test_{{ cookiecutter.project_slug }}
-{%- endif %}
-
-Deploying
----------
-
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
-
-$ bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.
+$ pytest tests.test_{{ cookiecutter.project_slug }} -k <test_name_prefix>
 
 Code of Conduct
 ---------------

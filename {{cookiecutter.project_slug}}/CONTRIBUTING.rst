@@ -78,14 +78,15 @@ How to
 
     $ cd {{ cookiecutter.project_slug }}/
     $ mamba env create -f {{ cookiecutter.project_slug }}/tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
+    $ pip install .
 
-4. Create a branch for local development::
+3. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
+4. When you're done making changes, check that your changes pass flake8 and the
    tests, including testing other Python versions with tox::
 
     $ make pytest
@@ -93,13 +94,13 @@ How to
     $ make urlcheck
 
 
-6. Commit your changes and push your branch to GitLab::
+5. Commit your changes and push your branch to GitLab::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push origin name-of-your-bugfix-or-feature
 
-7. Submit a merge request through the GitLab website.
+6. Submit a merge request through the GitLab website.
 
 Sign your commits
 ~~~~~~~~~~~~~~~~~

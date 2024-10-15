@@ -98,7 +98,7 @@ How to
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+    $ git push -u origin name-of-your-bugfix-or-feature
 
 7. Submit a merge request through the GitLab website.
 
@@ -267,7 +267,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the merge request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 3.6, 3.7, 3.8 and 3.9. Check
+3. The pull request should work for the latest three Python versions. Check
    {{ projecturl }}/-/merge_requests
    and make sure that the tests pass for all supported Python versions.
 
@@ -276,24 +276,7 @@ Tips
 
 To run a subset of tests::
 
-{% if cookiecutter.use_pytest == 'y' -%}
-    $ pytest tests.test_{{ cookiecutter.project_slug }}
-{% else %}
-    $ python -m unittest tests.test_{{ cookiecutter.project_slug }}
-{%- endif %}
-
-Deploying
----------
-
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
-
-$ bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.
+$ pytest tests.test_{{ cookiecutter.project_slug }} -k <test_name_prefix>
 
 Code of Conduct
 ---------------

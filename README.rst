@@ -158,18 +158,3 @@ make my own packaging experience better.
 .. _github comparison view: https://github.com/tony/cookiecutter-pypackage-pythonic/compare/audreyr:master...master
 .. _`network`: https://github.com/audreyr/cookiecutter-pypackage/network
 .. _`family tree`: https://github.com/audreyr/cookiecutter-pypackage/network/members
-
-Developed by
-------------
-
-.. image:: https://fernlab.git-pages.gfz-potsdam.de/products/data-portal/s2downloader/images/fernlab_logo.svg
-  :target: https://fernlab.gfz-potsdam.de/
-  :width: 10 %
-
-{{ cookiecutter.project_slug }} has been developed by `FERN.Lab <https://fernlab.gfz-potsdam.de/>`_, the Helmholtz Innovation Lab "Remote sensing for sustainable use of resources", located at the `Helmholtz Centre Potsdam, GFZ German Research Centre for Geosciences <https://www.gfz-potsdam.de/en/>`_. FERN.Lab is funded by the `Initiative and Networking Fund of the Helmholtz Association <https://www.helmholtz.de/en/about-us/structure-and-governance/initiating-and-networking/>`_.
-
-
-Credits
-------------
-
-This package was created with Cookiecutter_ and the `fernlab/cookiecutter-pypackage`_ project template.

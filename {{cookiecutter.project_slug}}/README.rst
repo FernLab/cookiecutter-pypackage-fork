@@ -55,8 +55,18 @@ You can find the protocol of recent changes in the {{ cookiecutter.project_name 
 `here <{{ projecturl }}/-/blob/main/HISTORY.rst>`__.
 
 
+Developed by
+------------
+
+.. image:: https://fernlab.gfz-potsdam.de/images/Fern.Lab_weiss-quadrat.png
+  :target: https://fernlab.gfz-potsdam.de/
+  :width: 10 %
+
+{{ cookiecutter.project_slug }} has been developed by `FERN.Lab <https://fernlab.gfz-potsdam.de/>`_, the Helmholtz Innovation Lab "Remote sensing for sustainable use of resources", located at the `Helmholtz Centre Potsdam, GFZ German Research Centre for Geosciences <https://www.gfz-potsdam.de/en/>`_. FERN.Lab is funded by the `Initiative and Networking Fund of the Helmholtz Association <https://www.helmholtz.de/en/about-us/structure-and-governance/initiating-and-networking/>`_.
+
+
 Credits
--------
+------------
 
 This package was created with Cookiecutter_ and the `fernlab/cookiecutter-pypackage`_ project template.
 

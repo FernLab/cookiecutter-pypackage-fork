@@ -55,13 +55,14 @@ test = [
     "urlchecker"
 ]
 lint = [
-    "pre-commit",
+    "pre-commit"
 ]
 dev = [
     "{{cookiecutter.project_slug}}[test]",
     "{{cookiecutter.project_slug}}[doc]",
     "{{cookiecutter.project_slug}}[lint]",
-    "twine"
+    "twine",
+    "build"
 ]
 
 [project.urls]

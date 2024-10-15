@@ -70,37 +70,37 @@ Commit Changes
 How to
 ~~~~~~
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitLab.
-2. Clone your fork locally::
+1. Clone the repository::
 
     $ git clone {{ giturl }}
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+2. Create an environment::
 
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
     $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
+    $ mamba env create -f {{ cookiecutter.project_slug }}/tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
+    $ pip install .
 
-4. Create a branch for local development::
+3. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
+4. When you're done making changes, check that your changes pass flake8 and the
    tests::
 
     $ make pytest
     $ make lint
     $ make urlcheck
 
-6. Commit your changes and push your branch to GitLab::
+
+5. Commit your changes and push your branch to GitLab::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
     $ git push -u origin name-of-your-bugfix-or-feature
 
-7. Submit a merge request through the GitLab website.
+6. Submit a merge request through the GitLab website.
 
 Sign your commits
 ~~~~~~~~~~~~~~~~~

@@ -66,7 +66,7 @@ test: ## run tests quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
 	pytest
 {%- else %}
-	python setup.py test
+	## add testsuite command
 {%- endif %}
 
 coverage: ## check code coverage quickly with the default Python
@@ -74,7 +74,7 @@ coverage: ## check code coverage quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
 	coverage run --source {{ cookiecutter.project_slug }} -m pytest
 {%- else %}
-	coverage run --source {{ cookiecutter.project_slug }} bin setup.py test
+	## add testsuite command
 {%- endif %}
 	coverage combine 	# must be called in order to make coverage work in multiprocessing
 	coverage report -m
@@ -113,12 +113,11 @@ release: dist ## package and upload a release
 	twine upload dist/*
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
+	python -m build
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+	pip install .
 
 gitlab_CI_docker:  ## Build a docker image for CI use within gitlab
 	cd ./tests/CI_docker/; bash ./build_{{ cookiecutter.project_slug }}_testsuite_image.sh

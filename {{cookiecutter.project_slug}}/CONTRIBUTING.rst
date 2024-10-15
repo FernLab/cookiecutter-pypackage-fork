@@ -258,7 +258,7 @@ If you commit new Python files, please note that they have to contain the follow
     #
     # This software was developed within the context [...]
     #
-    # This program is not yet licensed and used for internal development only.
+    # This program is not yet licensed, it should only be used for internal development.
     {% endif %}
 
 Merge Request Guidelines

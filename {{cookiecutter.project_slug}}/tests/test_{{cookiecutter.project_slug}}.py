@@ -139,7 +139,7 @@
 #
 # This software was developed within the context [...]
 #
-# This program is not yet licensed and used for internal development only.
+# This program is not yet licensed, it should only be used for internal development.
 {% endif %}
 {% if cookiecutter.use_pytest == 'y' -%}
 import pytest

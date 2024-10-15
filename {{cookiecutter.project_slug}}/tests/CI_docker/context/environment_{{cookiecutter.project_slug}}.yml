@@ -6,28 +6,23 @@ channels: &id1
 dependencies:
   - python=3.*.*
   - pip
+  # setup requirements
+  - tox
+  # test requirements
+  - pytest
+  - pytest-cov
+  - urlchecker
+  # lint requirements
+  - flake8
+  - pycodestyle
+  - pydocstyle
+  - pylint
+  # doc requirements
+  - sphinx>=4.1.1
+  - sphinx-argparse
+  - sphinx_rtd_theme
+  - # deployment requirements
+  - twine
 
   - pip:
-    # setup requirements
-    - tox
-
-    # test requirements
-    - pytest
-    - pytest-cov
     - pytest-reporter-html1
-    - urlchecker
-
-    # lint requirements
-    - flake8
-    - pycodestyle
-    - pydocstyle
-    - pylint
-
-    # doc requirements
-    - sphinx>=4.1.1
-    - sphinx-argparse
-    - sphinx_autodoc_typehints
-    - sphinx_rtd_theme
-
-    # deployment requirements
-    - twine

@@ -38,7 +38,6 @@ changelog = "https://github.com/{{cookiecutter.__gh_slug}}/blob/master/changelog
 homepage = "https://github.com/{{cookiecutter.__gh_slug}}"
 
 [tool.setuptools]
-package-dir = {"" = "src"}
 
 [tool.setuptools.package-data]
 "*" = ["*.*"]

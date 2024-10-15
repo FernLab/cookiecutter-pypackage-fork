@@ -9,4 +9,4 @@ if __name__ == '__main__':
         pathlib.Path('docs', 'authors.rst').unlink()
 
     if 'no' in '{{ cookiecutter.command_line_interface|lower }}':
-        pathlib.Path('src', '{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}_cli.py').unlink()
+        pathlib.Path('{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}_cli.py').unlink()

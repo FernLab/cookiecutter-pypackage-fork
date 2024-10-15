@@ -18,10 +18,7 @@ dependencies:
     - urlchecker
 
     # lint requirements
-    - flake8
-    - pycodestyle
-    - pydocstyle
-    - pylint
+    - pre-commit
 
     # doc requirements
     - sphinx>=4.1.1

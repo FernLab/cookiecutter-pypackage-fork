@@ -174,7 +174,7 @@ req_doc = [
     'sphinx_rtd_theme'
 ]
 
-req_lint = ['flake8', 'pycodestyle', 'pydocstyle']
+req_lint = ['pre-commit']
 
 req_dev = ['twine'] + req_setup + req_test + req_doc + req_lint
 

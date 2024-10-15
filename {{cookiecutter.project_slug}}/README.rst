@@ -1,4 +1,4 @@
-{% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
+{% set is_open_source = cookiecutter.open_source_license != 'None' -%}
 {% set group = cookiecutter.gitlab_group_or_username -%}
 {% set subgroup = cookiecutter.gitlab_subgroup_name -%}
 {% set slug = cookiecutter.project_slug -%}

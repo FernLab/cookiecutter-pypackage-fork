@@ -10,6 +10,3 @@ if __name__ == '__main__':
 
     if 'no' in '{{ cookiecutter.command_line_interface|lower }}':
         pathlib.Path('src', '{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}_cli.py').unlink()
-
-    if 'Not open source' == '{{ cookiecutter.open_source_license }}':
-        pathlib.Path('LICENSE').unlink()

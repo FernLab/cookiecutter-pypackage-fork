@@ -67,7 +67,11 @@ Developed by
 .. image:: https://mamba.readthedocs.io/en/latest/_static/logo.png
      :target: https://mamba.readthedocs.io/en/latest/
      :width: 10 %
-     
+
+.. image:: {{cookiecutter.project_slug}}/Fernlab_Logo.svg
+     :target: https://mamba.readthedocs.io/en/latest/
+     :width: 10 %
+
 Credits
 ------------
 

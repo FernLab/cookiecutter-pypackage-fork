@@ -24,11 +24,26 @@ Using mamba_ (latest version recommended), {{ cookiecutter.project_name }} is in
 
     $ apt-get update -y && \
        echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
-       apt-get install -y -q dialog apt-utils && \
-       apt-get install bzip2 curl fish gcc gdb -y && \
-       apt-get install ipython make nano pip tree wget cron -y  && \
-       apt-get install zip unzip vim bash-completion -y && \
-       apt-get install git git-lfs -y && git-lfs install
+    $ apt-get install -y -q dialog apt-utils && \
+    $ apt-get install -y -q \
+          bzip2 \
+          curl \
+          fish \
+          gcc \
+          gdb \
+          make \
+          nano \
+          python3-pip \
+          tree \
+          wget \
+          cron \
+          zip \
+          unzip \
+          vim \
+          bash-completion \
+          git \
+          git-lfs && \
+    $ git-lfs install
 
     $ mamba activate base
     $ mamba update all
@@ -65,12 +80,27 @@ Using conda_ (latest version recommended), {{ cookiecutter.project_name }} is in
    .. code-block:: bash
 
     $ apt-get update -y && \
-      echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
-      apt-get install -y -q dialog apt-utils && \
-      apt-get install bzip2 curl fish gcc gdb -y && \
-      apt-get install ipython make nano pip tree wget cron -y  && \
-      apt-get install zip unzip vim bash-completion -y && \
-      apt-get install git git-lfs -y && git-lfs install
+       echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+    $ apt-get install -y -q dialog apt-utils && \
+    $ apt-get install -y -q \
+          bzip2 \
+          curl \
+          fish \
+          gcc \
+          gdb \
+          make \
+          nano \
+          python3-pip \
+          tree \
+          wget \
+          cron \
+          zip \
+          unzip \
+          vim \
+          bash-completion \
+          git \
+          git-lfs && \
+    $ git-lfs install
 
     $ conda activate base
     $ conda update all

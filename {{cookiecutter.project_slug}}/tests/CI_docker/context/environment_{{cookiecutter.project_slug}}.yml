@@ -19,7 +19,6 @@ dependencies:
   - sphinx>=4.1.1
   - sphinx-autodoc-typehints
   - sphinx-argparse
-  - sphinx-autodoc-typehints
   - sphinx_rtd_theme
   # deployment requirements
   - twine

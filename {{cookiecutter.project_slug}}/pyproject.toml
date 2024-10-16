@@ -1,53 +1,93 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = [
+    "setuptools>=61.2",
+    "setuptools-git",
+]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "{{cookiecutter.project_slug}}"
-version = "{{cookiecutter.version}}"
+dynamic = ["version"]
 description = "{{cookiecutter.project_short_description}}"
-readme = "README.rst"
 authors = [
   {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
 ]
-maintainers = [
-  {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
-]
-classifiers = [
-
-]
 license = {text = "{{cookiecutter.open_source_license}}"}
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    # "License :: OSI Approved :: European Union Public Licence 1.2 (EUPL 1.2)",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
+keywords = [
+    "remote sensing"
+]
 dependencies = [
   {% if cookiecutter.command_line_interface.lower() == "typer" -%}
   "typer"
 {%- endif %}
 ]
 
+[project.readme]
+file = "README.rst"
+content-type = "text/x-rst"
+
+maintainers = [
+  {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
+]
+
 [project.optional-dependencies]
+doc = [
+    "sphinx>=4.1.1",
+    "sphinx-argparse",
+    "sphinx_rtd_theme",
+    "sphinx-autodoc-typehints",
+    "numpydoc>=1.7"
+]
+test = [
+    "pytest>=3",
+    "pytest-cov",
+    "pytest-reporter-html1",
+    "urlchecker"
+]
+lint = [
+    "pre-commit"
+]
 dev = [
-    "coverage",  # testing
-    "mypy",  # linting
-    "pytest",  # testing
-    "ruff"  # linting
+    "{{cookiecutter.project_slug}}[test]",
+    "{{cookiecutter.project_slug}}[doc]",
+    "{{cookiecutter.project_slug}}[lint]",
+    "twine",
+    "build"
 ]
 
 [project.urls]
-
-bugs = "https://github.com/{{cookiecutter.__gh_slug}}/issues"
-changelog = "https://github.com/{{cookiecutter.__gh_slug}}/blob/master/changelog.md"
-homepage = "https://github.com/{{cookiecutter.__gh_slug}}"
+"Source code" = "https://git.gfz-potsdam.de/{{cookiecutter.__gh_slug}}"
+"Issue Tracker" = "https://git.gfz-potsdam.de/{{cookiecutter.__gh_slug}}/-/issues"
+"Documentation" = "https://fernlab.git-pages.gfz-potsdam.de/{{cookiecutter.__gh_slug}}/doc/"
+"Change log" = "https://git.gfz-potsdam.de/{{cookiecutter.__gh_slug}}/-/blob/main/HISTORY.rst"
+# "Zenodo" = "https://zenodo.org/record/doi_number"
 
 [tool.setuptools]
-package-dir = {"" = "src"}
+zip-safe = false
+include-package-data = true
+license-files = ["LICENSE"]
 
-[tool.setuptools.package-data]
-"*" = ["*.*"]
+[tool.setuptools.packages.find]
+exclude = [
+    "docs*",
+    "tests*",
+]
+namespaces = false
 
 {% if cookiecutter.command_line_interface == 'Yes' %}
 [project.scripts]
-{{cookiecutter.slug}} = "{{cookiecutter.slug}}.cli:app"
+{{cookiecutter.slug}} = "{{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}_cli:main"
 {% endif %}
-
 
 # Mypy
 # ----
@@ -66,3 +106,8 @@ module = "tests.*"
 allow_untyped_defs = true
 disable_error_code = "attr-defined"
 
+[tool.setuptools.dynamic]
+version = {attr = "{{cookiecutter.project_slug}}.version.__version__"}
+
+[tool.distutils.bdist_wheel]
+universal = 1

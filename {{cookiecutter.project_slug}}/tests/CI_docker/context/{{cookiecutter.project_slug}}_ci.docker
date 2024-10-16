@@ -1,14 +1,18 @@
-# ref https://github.com/tebeka/pythonwise/blob/master/docker-miniconda/Dockerfile
-FROM condaforge/miniforge3
+# Container for building the environment
+FROM condaforge/miniforge3:latest
 
 # System packages
 RUN apt-get update -y && \
     echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get install -y -q dialog apt-utils && \
-    apt-get install libudunits2-dev build-essential bash-completion automake -y && \
-    apt-get install cmake zlib1g-dev libpng-dev libjpeg-dev -y  && \
-    apt-get install wget vim zip unzip curl git git-lfs jq apt-rdepends -y && \
-    apt-get install strace bzip2 cron make gcc -y && git-lfs install
+    apt-get install bzip2 curl fish gcc gdb -y && \
+    apt-get install make nano pip tree wget cron -y  && \
+    apt-get install zip unzip vim bash-completion -y && \
+    apt-get install git git-lfs -y && git-lfs install
+
+# update base environment
+RUN --mount=type=cache,target=/opt/conda/pkgs \
+    mamba update --all -y
 
 # copy some needed stuff to /root
 COPY *.yml /root/

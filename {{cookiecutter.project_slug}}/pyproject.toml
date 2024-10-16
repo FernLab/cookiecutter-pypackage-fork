@@ -62,7 +62,7 @@ dev = [
     "pre-commit",   # linting
     "pytest",       # testing
     "twine",        # deployment
-    "build"         # deployment 
+    "build"         # deployment
 ]
 
 [project.urls]
@@ -88,4 +88,3 @@ namespaces = false
 [project.scripts]
 {{cookiecutter.slug}} = "{{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}_cli:main"
 {% endif %}
-

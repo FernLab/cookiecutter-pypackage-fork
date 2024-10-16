@@ -1,3 +1,9 @@
+/* SPDX-License-Identifier: {{ cookiecutter.spdx_license }} */
+/* FileType: STYLE */
+/* FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam */
+
+
+
 .wy-nav-content {
 max-width: 1200px !important;
 }

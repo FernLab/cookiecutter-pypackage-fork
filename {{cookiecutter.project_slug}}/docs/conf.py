@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+# FileType: SOURCE
+# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #

@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+# FileType: CONFIG
+# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
 # Minimal makefile for Sphinx documentation
 #
 

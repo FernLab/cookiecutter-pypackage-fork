@@ -1,4 +1,5 @@
 {
+  "year": "{{ cookiecutter._current_year }}",
   "full_name": "FernLab",
   "email": "fernlab@gfz-potsdam.de",
   "github_username": "fernlab",

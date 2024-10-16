@@ -1,3 +1,10 @@
+#!/bin/bash
+# SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+# FileType: SCRIPT
+# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
 #!/usr/bin/env bash
 set -e
 # Any subsequent(*) commands which fail will cause the shell script to exit immediately

@@ -1,3 +1,8 @@
+# SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+# FileType: SOURCE
+# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
 # ref https://github.com/tebeka/pythonwise/blob/master/docker-miniconda/Dockerfile
 FROM python:3.10-slim-buster
 

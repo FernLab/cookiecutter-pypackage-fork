@@ -1,3 +1,9 @@
+# SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+# FileType: CONFIG
+# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
 .PHONY: clean clean-build clean-pyc clean-test coverage dist docs help install lint
 
 .DEFAULT_GOAL := help

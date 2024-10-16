@@ -1,6 +1,5 @@
 # SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
-# FileType: CONFIG
-# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
-
+# FileType: DOCUMENTATION
+# FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 

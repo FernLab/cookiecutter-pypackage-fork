@@ -5,10 +5,26 @@ FROM condaforge/miniforge3:latest
 RUN apt-get update -y && \
     echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
     apt-get install -y -q dialog apt-utils && \
-    apt-get install bzip2 curl fish gcc gdb -y && \
-    apt-get install make nano pip tree wget cron -y  && \
-    apt-get install zip unzip vim bash-completion -y && \
-    apt-get install git git-lfs -y && git-lfs install
+    apt-get install -y -q \
+        bzip2 \
+        curl \
+        fish \
+        gcc \
+        gdb \
+        make \
+        nano \
+        python3-pip \
+        tree \
+        wget \
+        cron \
+        zip \
+        unzip \
+        vim \
+        bash-completion \
+        git \
+        git-lfs && \
+    git-lfs install && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # update base environment
 RUN --mount=type=cache,target=/opt/conda/pkgs \

@@ -1,7 +1,7 @@
 #!/bin/bash
 # SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
 # FileType: SCRIPT
-# FileCopyrightText: {{ cookiecutter.year }}, {{ cookiecutter.full_name }} at GFZ Potsdam
+# FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
 

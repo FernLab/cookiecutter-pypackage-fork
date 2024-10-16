@@ -21,6 +21,7 @@ dependencies:
   - sphinx-argparse
   - sphinx_rtd_theme
   # deployment requirements
+  - build
   - twine
   # lint requirements
   - pre-commit

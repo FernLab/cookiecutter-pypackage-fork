@@ -1,4 +1,4 @@
-REM SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+REM SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
 REM FileType: SCRIPT
 REM FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 

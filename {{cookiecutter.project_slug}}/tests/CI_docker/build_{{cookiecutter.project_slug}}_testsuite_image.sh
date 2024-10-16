@@ -1,5 +1,5 @@
 #!/bin/bash
-# SPDX-License-Identifier: {{ cookiecutter.spdx_license }}
+# SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
 # FileType: SCRIPT
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 

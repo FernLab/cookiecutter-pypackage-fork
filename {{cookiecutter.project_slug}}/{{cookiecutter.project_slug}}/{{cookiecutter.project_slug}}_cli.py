@@ -1,14 +1,7 @@
-{% set group = cookiecutter.gitlab_group_or_username -%}
-{% set subgroup = cookiecutter.gitlab_subgroup_name -%}
-{% set slug = cookiecutter.project_slug -%}
-{% if subgroup -%}
-    {%- set projecturl -%}{{ 'https://git.gfz-potsdam.de' }}/{{group}}/{{subgroup}}/{{slug}}{%- endset -%}
-{% else -%}
-    {%- set projecturl -%}{{ 'https://git.gfz-potsdam.de' }}/{{group}}/{{slug}}{%- endset -%}
-{% endif -%}
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-"""The setup script."""
+"""Console script for {{cookiecutter.project_slug}}."""
 
 {% if cookiecutter.open_source_license == 'MIT license' -%}
 # {{ cookiecutter.project_name }}, {{ cookiecutter.project_short_description }}
@@ -147,90 +140,45 @@
 #
 # This software was developed within the context [...]
 #
-# This program is not yet licensed and used for internal development only.
+# This program is not yet licensed, it should only be used for internal development.
 {% endif %}
-from setuptools import setup, find_packages
-
-with open('README.rst') as readme_file:
-    readme = readme_file.read()
-
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
-
-version = {}
-with open("{{ cookiecutter.project_slug }}/version.py") as version_file:
-    exec(version_file.read(), version)
-
-req = [{%- if cookiecutter.command_line_interface|lower == 'click' %}'Click>=7.0'{%- endif %}]
-
-req_setup = [{%- if cookiecutter.use_pytest == 'y' %}'pytest-runner'{%- endif %}]
-
-req_test = [{%- if cookiecutter.use_pytest == 'y' %}'pytest>=3', 'pytest-cov', 'pytest-reporter-html1'{%- endif %}, 'urlchecker']
-
-req_doc = [
-    'sphinx>=4.1.1',
-    'sphinx-argparse',
-    'sphinx-autodoc-typehints',
-    'sphinx_rtd_theme'
-]
-
-req_lint = ['pre-commit']
-
-req_dev = ['twine'] + req_setup + req_test + req_doc + req_lint
-
-{%- set license_classifiers = {
-    'MIT license': 'License :: OSI Approved :: MIT License',
-    'BSD license': 'License :: OSI Approved :: BSD License',
-    'ISC license': 'License :: OSI Approved :: ISC License (ISCL)',
-    'Apache Software License 2.0': 'License :: OSI Approved :: Apache Software License',
-    'GNU General Public License v3': 'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
-    'None': 'None'
-} %}
-
-setup(
-    author="{{ cookiecutter.full_name.replace('\"', '\\\"') }}",
-    author_email='{{ cookiecutter.email }}',
-    python_requires='>=3.7',
-    classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
-        'Intended Audience :: Developers',
-{%- if cookiecutter.open_source_license in license_classifiers %}
-        '{{ license_classifiers[cookiecutter.open_source_license] }}',
+{%- if cookiecutter.command_line_interface|lower == 'argparse' %}
+import argparse
 {%- endif %}
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10'
-    ],
-    description="{{ cookiecutter.project_short_description }}",
-    {%- if 'no' not in cookiecutter.command_line_interface|lower %}
-    entry_points={
-        'console_scripts': [
-            '{{ cookiecutter.project_slug }}={{ cookiecutter.project_slug }}.{{ cookiecutter.project_slug }}_cli:main',
-        ],
-    },
-    {%- endif %}
-    extras_require={
-        "doc": req_doc,
-        "test": req_test,
-        "lint": req_lint,
-        "dev": req_dev
-    },
-    install_requires=req,
-{%- if cookiecutter.open_source_license in license_classifiers %}
-    license="{{ cookiecutter.open_source_license }}",
+import sys
+{%- if cookiecutter.command_line_interface|lower == 'click' %}
+import click
 {%- endif %}
-    include_package_data=True,
-    keywords='{{ cookiecutter.project_slug }}',
-    long_description=readme,
-    name='{{ cookiecutter.project_slug }}',
-    packages=find_packages(include=['{{ cookiecutter.project_slug }}', '{{ cookiecutter.project_slug }}.*']),
-    setup_requires=req_setup,
-    test_suite='tests',
-    tests_require=req_test,
-    url='{{ projecturl }}',
-    version=version['__version__'],
-    zip_safe=False,
-)
+
+{% if cookiecutter.command_line_interface|lower == 'click' %}
+@click.command()
+def main(args=None):
+    """Console script for {{cookiecutter.project_slug}}."""
+    click.echo("Replace this message by putting your code into "
+               "{{cookiecutter.project_slug}}.cli.main")
+    click.echo("See click documentation at https://click.palletsprojects.com/")
+    return 0
+{%- endif %}
+{%- if cookiecutter.command_line_interface|lower == 'argparse' %}
+def get_argparser():
+    """Get a console argument parser for {{ cookiecutter.project_name }}."""
+    parser = argparse.ArgumentParser()
+    parser.add_argument('_', nargs='*')
+
+    return parser
+
+
+def main():
+    """Console script for {{cookiecutter.project_slug}}."""
+    argparser = get_argparser()
+    parsed_args = argparser.parse_args()
+
+    print("Arguments: " + str(parsed_args._))
+    print("Replace this message by putting your code into "
+          "{{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}_cli")
+    return 0
+{%- endif %}
+
+
+if __name__ == "__main__":
+    sys.exit(main())  # pragma: no cover

@@ -58,11 +58,11 @@ lint = [
     "pre-commit"
 ]
 dev = [
-    "coverage",    # testing
-    "pre-commit",  # linting
-    "pytest",      # testing
-    "twine",       # build
-    "build"        # build
+    "coverage",     # testing
+    "pre-commit",   # linting
+    "pytest",       # testing
+    "twine",        # deployment
+    "build"         # deployment
 ]
 
 [project.urls]
@@ -88,4 +88,3 @@ namespaces = false
 [project.scripts]
 {{cookiecutter.slug}} = "{{cookiecutter.project_slug}}.{{cookiecutter.project_slug}}_cli:main"
 {% endif %}
-

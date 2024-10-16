@@ -70,40 +70,37 @@ Commit Changes
 How to
 ~~~~~~
 
-1. Fork the `{{ cookiecutter.project_slug }}` repo on GitLab.
-2. Clone your fork locally::
+1. Clone the repository::
 
     $ git clone {{ giturl }}
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+2. Create an environment::
 
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
     $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
+    $ mamba env create -f {{ cookiecutter.project_slug }}/tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
+    $ pip install .
 
-4. Create a branch for local development::
+3. Create a branch for local development::
 
     $ git checkout -b name-of-your-bugfix-or-feature
 
    Now you can make your changes locally.
 
-5. When you're done making changes, check that your changes pass flake8 and the
-   tests, including testing other Python versions with tox::
+4. When you're done making changes, check that your changes pass flake8 and the
+   tests::
 
     $ make pytest
     $ make lint
     $ make urlcheck
-    $ tox
 
-   To get flake8 and tox, just pip install them into your virtualenv.
 
-6. Commit your changes and push your branch to GitLab::
+5. Commit your changes and push your branch to GitLab::
 
     $ git add .
     $ git commit -m "Your detailed description of your changes."
-    $ git push origin name-of-your-bugfix-or-feature
+    $ git push -u origin name-of-your-bugfix-or-feature
 
-7. Submit a merge request through the GitLab website.
+6. Submit a merge request through the GitLab website.
 
 Sign your commits
 ~~~~~~~~~~~~~~~~~
@@ -258,7 +255,7 @@ If you commit new Python files, please note that they have to contain the follow
     #
     # This software was developed within the context [...]
     #
-    # This program is not yet licensed and used for internal development only.
+    # This program is not yet licensed, it should only be used for internal development.
     {% endif %}
 
 Merge Request Guidelines
@@ -270,7 +267,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the merge request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 3.6, 3.7, 3.8 and 3.9. Check
+3. The pull request should work for the latest three Python versions. Check
    {{ projecturl }}/-/merge_requests
    and make sure that the tests pass for all supported Python versions.
 
@@ -279,24 +276,7 @@ Tips
 
 To run a subset of tests::
 
-{% if cookiecutter.use_pytest == 'y' -%}
-    $ pytest tests.test_{{ cookiecutter.project_slug }}
-{% else %}
-    $ python -m unittest tests.test_{{ cookiecutter.project_slug }}
-{%- endif %}
-
-Deploying
----------
-
-A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in HISTORY.rst).
-Then run::
-
-$ bump2version patch # possible: major / minor / patch
-$ git push
-$ git push --tags
-
-Travis will then deploy to PyPI if tests pass.
+$ pytest tests.test_{{ cookiecutter.project_slug }} -k <test_name_prefix>
 
 Code of Conduct
 ---------------

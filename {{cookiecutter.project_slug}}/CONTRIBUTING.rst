@@ -70,6 +70,19 @@ Commit Changes
 How to
 ~~~~~~
 
+0. Update the base environment and install system-packages::
+
+    $ apt-get update -y && \
+      echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+      apt-get install -y -q dialog apt-utils && \
+      apt-get install bzip2 curl fish gcc gdb -y && \
+      apt-get install ipython make nano pip tree wget cron -y  && \
+      apt-get install zip unzip vim bash-completion -y && \
+      apt-get install git git-lfs -y && git-lfs install
+
+    $ mamba activate base
+    $ mamba update all
+
 1. Clone the repository::
 
     $ git clone {{ giturl }}

@@ -21,7 +21,7 @@ dependencies:
   - sphinx_rtd_theme
   - # deployment requirements
   - twine
-  - build
+  - python-build
 
   - pip:
     - pytest-reporter-html1

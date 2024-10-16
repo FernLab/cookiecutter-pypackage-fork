@@ -35,6 +35,7 @@ test_{{ cookiecutter.project_slug }}:
         path: coverage.xml
       junit: report.xml
     expire_in: 30 days
+    when: always
 
 
 test_styles:

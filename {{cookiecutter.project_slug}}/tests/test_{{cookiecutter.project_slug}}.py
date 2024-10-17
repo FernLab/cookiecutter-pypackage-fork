@@ -29,7 +29,7 @@ def response():
 
 def test_content(response):
     """Sample pytest test function which prints the package version."""
-    assert python_boilerplate.__version__ == "{{ cookiecutter.version }}"
+    assert {{ cookiecutter.project_slug }}.__version__ == "{{ cookiecutter.version }}"
 {%- else %}
 
 

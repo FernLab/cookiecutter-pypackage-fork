@@ -58,7 +58,10 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 lint: ## check style with pre-commit
-	pre-commit run --files {{ cookiecutter.project_slug }}/* > tests/linting/pre-commit-output.txt 2>&1 || true
+	@pre-commit run --files python_boilerplate/* > tests/linting/pre-commit-output.txt 2>&1 || { \
+        echo "pre-commit failed. Please check tests/linting/pre-commit-output.txt for details."; \
+        exit 1; \
+    }
 
 urlcheck: ## check for dead URLs
 	urlchecker check . --file-types .py,.rst,.md,.json

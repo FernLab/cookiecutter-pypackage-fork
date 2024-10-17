@@ -22,12 +22,15 @@ dependencies:
   - pylint
   # doc requirements
   - sphinx>=4.1.1
+  - sphinx-autodoc-typehints
   - sphinx-argparse
   - sphinx_rtd_theme
   - sphinx-autodoc-typehints
   # deployment requirements
-  - twine
   - python-build
+  - twine
+  # lint requirements
+  - pre-commit
 
   - pip:
     - pytest-reporter-html1

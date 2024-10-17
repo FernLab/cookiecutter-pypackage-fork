@@ -1,0 +1,59 @@
+default_stages: [pre-commit, pre-push]
+default_language_version:
+    python: python3.13
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace  # Removes trailing whitespace from files
+      - id: end-of-file-fixer  # Ensures files end with a newline
+      - id: check-yaml  # Checks YAML files for syntax errors
+      - id: check-json  # Checks JSON files for syntax errors
+      - id: check-added-large-files  # Prevents adding large files to the repository
+      - id: detect-private-key  # Detects if a private key is being committed
+      - id: no-commit-to-branch
+        args: [--branch, main]  # Prevents commits directly to the main branch
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.6.9  
+    hooks:
+      - id: ruff
+        name: "Ruff - Lint and Style"
+        args:
+          - "--fix"  # Automatically fix simple issues
+          - "--select=F,E,W,C,D,I"  # Includes: pyflakes, pycodestyle, pydocstyle, complexity, and isort checks
+          - "--line-length=120"  # Adjust to custom line length according to FERN.Lab guidelines
+        files: '^{{ cookiecutter.project_slug }}/'
+      - id: ruff-format
+        name: "Ruff - Format"
+        args: [--diff]  # Show diff instead of fixing
+        types_or: [python] # Only run on Python files
+        files: '^{{ cookiecutter.project_slug }}/'
+
+  - repo: https://github.com/PyCQA/pylint
+    rev: v3.3.1
+    hooks:
+      - id: pylint
+        args:
+          - "-rn"  # Suppress final score
+          - "-sn"  # Suppress message count
+          - "--output-format=colorized"  # Colorize the output for easier readability
+          - "--disable=missing-docstring"  # Disable missing docstring check
+        files: '^{{ cookiecutter.project_slug }}/'
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.10
+    hooks:
+      - id: bandit
+        args: ["--skip=B101"]  # Example: skip hardcoded password check
+  
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 'v1.12.0'   
+    hooks:
+      - id: mypy
+        args:
+          - --ignore-missing-imports  # Ignores modules not found in the type system
+          - --show-error-codes        # Show error codes with type violations
+          - --warn-unused-ignores     # Warn if `# type: ignore` comments are unnecessary
+        files: '^{{ cookiecutter.project_slug }}/'
+  

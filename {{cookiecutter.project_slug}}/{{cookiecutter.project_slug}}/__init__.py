@@ -6,11 +6,9 @@
 """Top-level package for {{ cookiecutter.project_name }}."""
 
 __author__ = """{{ cookiecutter.full_name }}"""
-__email__ = '{{ cookiecutter.email }}'
+__email__ = "{{ cookiecutter.email }}"
 
 from .version import __version__
 
 
-__all__ = [
-    '__version__'
-]
+__all__ = ["__version__"]

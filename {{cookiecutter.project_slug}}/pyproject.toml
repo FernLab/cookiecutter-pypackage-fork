@@ -68,7 +68,7 @@ dev = [
     "{{cookiecutter.project_slug}}[doc]",
     "{{cookiecutter.project_slug}}[lint]",
     "twine",
-    "build"
+    "python-build"
 ]
 
 [project.urls]

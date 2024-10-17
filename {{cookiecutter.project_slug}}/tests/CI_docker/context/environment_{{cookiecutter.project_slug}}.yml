@@ -25,7 +25,7 @@ dependencies:
   - sphinx>=4.1.1
   - sphinx-argparse
   - sphinx_rtd_theme
-  - # deployment requirements
+  # deployment requirements
   - twine
   - python-build
 

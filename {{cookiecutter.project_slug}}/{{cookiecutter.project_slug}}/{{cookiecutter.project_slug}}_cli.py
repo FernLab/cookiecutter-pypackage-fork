@@ -3,8 +3,6 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """Console script for {{cookiecutter.project_slug}}."""

@@ -3,8 +3,7 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """Tests for `{{ cookiecutter.project_slug }}` package."""
 
@@ -15,10 +14,10 @@ import unittest
 {%- endif %}
 
 {%- if cookiecutter.command_line_interface|lower == 'click' %}
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}_cli
+# from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}_cli
 {%- endif %}
 
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+# from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
 {%- if cookiecutter.use_pytest == 'y' %}
 
 

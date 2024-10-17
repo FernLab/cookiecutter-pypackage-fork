@@ -4,8 +4,6 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
-#!/usr/bin/env bash
 set -e
 
 context_dir="./context"

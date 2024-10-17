@@ -3,8 +3,6 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-# -*- coding: utf-8 -*-
-
 """Tests for `{{ cookiecutter.project_slug }}` package."""
 
 {% if cookiecutter.use_pytest == 'y' -%}

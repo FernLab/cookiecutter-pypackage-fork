@@ -3,7 +3,6 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
 name: {{ cookiecutter.project_slug }}
 
 channels: &id1
@@ -26,6 +25,7 @@ dependencies:
   - sphinx-autodoc-typehints
   - sphinx-argparse
   - sphinx_rtd_theme
+  - sphinx-autodoc-typehints
   # deployment requirements
   - python-build
   - twine

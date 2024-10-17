@@ -3,7 +3,6 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
 """Top-level package for {{ cookiecutter.project_name }}."""
 
 __author__ = """{{ cookiecutter.full_name }}"""

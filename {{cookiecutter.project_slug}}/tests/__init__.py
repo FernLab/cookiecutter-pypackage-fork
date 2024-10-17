@@ -3,5 +3,4 @@
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
 """Unit test package for {{ cookiecutter.project_slug }}."""

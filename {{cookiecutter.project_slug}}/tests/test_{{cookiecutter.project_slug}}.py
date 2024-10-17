@@ -1,10 +1,9 @@
+#!/usr/bin/env python
+
 # SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
 # FileType: SOURCE
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
-
-
-#!/usr/bin/env python
 
 """Tests for `{{ cookiecutter.project_slug }}` package."""
 
@@ -14,11 +13,7 @@ import pytest
 import unittest
 {%- endif %}
 
-{%- if cookiecutter.command_line_interface|lower == 'click' %}
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}_cli
-{%- endif %}
-
-from {{ cookiecutter.project_slug }} import {{ cookiecutter.project_slug }}
+import {{ cookiecutter.project_slug }}
 {%- if cookiecutter.use_pytest == 'y' %}
 
 
@@ -33,9 +28,8 @@ def response():
 
 
 def test_content(response):
-    """Sample pytest test function with the pytest fixture as an argument."""
-    # from bs4 import BeautifulSoup
-    # assert 'GitHub' in BeautifulSoup(response.content).title.string
+    """Sample pytest test function which prints the package version."""
+    assert {{ cookiecutter.project_slug }}.__version__ == "{{ cookiecutter.version }}"
 {%- else %}
 
 

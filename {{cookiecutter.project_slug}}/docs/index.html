@@ -1,0 +1,10 @@
+{% set group = cookiecutter.gitlab_group_or_username -%}
+{% set subgroup = cookiecutter.gitlab_subgroup_name -%}
+{% set slug = cookiecutter.project_slug -%}
+{% if subgroup -%}
+    {%- set projecturl -%}{{ group }}{{ '.git-pages.gfz-potsdam.de' }}/{{subgroup}}/{{slug}}{%- endset -%}
+{% else -%}
+    {%- set projecturl -%}{{ group }}{{ '.git-pages.gfz-potsdam.de' }}/{{slug}}{%- endset -%}
+{% endif -%}
+<meta http-equiv="refresh" content="0; url=https://{{ projecturl }}/doc/readme.html" />
+

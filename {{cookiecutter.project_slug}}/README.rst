@@ -39,6 +39,13 @@ Status
 .. image:: https://img.shields.io/static/v1?label=Documentation&message=GitLab%20Pages&color=orange
         :target: {{ pagesurl }}/doc/
         :alt: Documentation
+
+..
+  for adding a DOI badge fill and uncomment the following:
+  image:: (link to your DOI badge svg on zenodo)
+  target: (link to your DOI on zenodo)
+  alt: DOI
+
 {% if cookiecutter.add_pyup_badge == 'y' %}
 .. image:: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/shield.svg
      :target: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/

@@ -1,3 +1,9 @@
+.. SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
+.. FileType: DOCUMENTATION
+.. FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
 {% set group = cookiecutter.gitlab_group_or_username -%}
 {% set subgroup = cookiecutter.gitlab_subgroup_name -%}
 {% set slug = cookiecutter.project_slug -%}

@@ -76,6 +76,34 @@ Commit Changes
 How to
 ~~~~~~
 
+0. Update the base environment and install system-packages::
+
+    $ apt-get update -y && \
+       echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+    $ apt-get install -y -q dialog apt-utils && \
+    $ apt-get install -y -q \
+          bzip2 \
+          curl \
+          fish \
+          gcc \
+          gdb \
+          make \
+          nano \
+          python3-pip \
+          tree \
+          wget \
+          cron \
+          zip \
+          unzip \
+          vim \
+          bash-completion \
+          git \
+          git-lfs && \
+    $ git-lfs install
+
+    $ mamba activate base
+    $ mamba update all
+
 1. Clone the repository::
 
     $ git clone {{ giturl }}

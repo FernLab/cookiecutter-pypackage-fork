@@ -125,3 +125,35 @@ pages:  # this job must be called 'pages' to advise GitLab to upload content to 
     expire_in: 30 days
   only:
     - main
+
+# can be used for uploading tagged versions to PyPi, credits need to be set in the GitLab settings as environment
+# variables before!
+
+#deploy_pypi:
+#  stage: deploy
+#  dependencies:
+#    - test_{{ cookiecutter.project_slug }}
+#  script:
+#    - source activate ci_env
+#    - pip install -U twine build
+#    - python -m build --sdist
+#    - twine check dist/*
+#    - twine upload dist/*  # requires creds as environment variables
+#  only:
+#    - /^v\d+\.\d+\.\d+([abc]\d*)?$/  # PEP-440 compliant version (tags)
+#  except:
+#    - dev
+
+# This creates a new release on an associated GitHub repo when tagged.
+# The sync of the code needs to happen over the settings in the GitLab!
+
+#create_github_release:
+#    stage: deploy
+#    dependencies:
+#       - test_{{ cookiecutter.project_slug }}
+#    script:
+#        - bash ./.github/create_release_from_gitlab_ci.sh  # uses environment variables set in the UI
+#    only:
+#        - /^v\d+\.\d+\.\d+([abc]\d*)?$/  # PEP-440 compliant version (tags)
+#    except:
+#        - dev

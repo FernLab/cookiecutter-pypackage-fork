@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
 # FileType: SCRIPT
 # FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
 
 
-
-#!/usr/bin/env bash
 set -e
 
 context_dir="./context"

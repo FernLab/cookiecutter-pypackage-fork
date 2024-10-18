@@ -37,7 +37,6 @@ pip-delete-this-directory.txt
 
 # Unit test / coverage reports
 htmlcov/
-.tox/
 .coverage
 .coverage.*
 .cache
@@ -72,6 +71,9 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# Dask worker cache
+dask-worker-space/
 
 # pyenv
 .python-version

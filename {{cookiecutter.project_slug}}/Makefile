@@ -1,4 +1,11 @@
-.PHONY: clean clean-test clean-pyc clean-build docs help pytest
+# SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
+# FileType: CONFIG
+# FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
+.PHONY: clean clean-build clean-pyc clean-test coverage dist docs help install lint
+
 .DEFAULT_GOAL := help
 
 define BROWSER_PYSCRIPT
@@ -42,7 +49,6 @@ clean-pyc: ## remove Python file artifacts
 	find . -name '__pycache__' -exec rm -fr {} +
 
 clean-test: ## remove test and coverage artifacts
-	rm -fr .tox/
 	rm -f .coverage
 	rm -fr .coverage.*
 	rm -fr htmlcov/
@@ -51,13 +57,14 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr coverage.xml
 	rm -fr .pytest_cache
 
-lint: ## check style with flake8
-	flake8 --max-line-length=120 {{ cookiecutter.project_slug }} tests > ./tests/linting/flake8.log || \
-		(cat ./tests/linting/flake8.log && exit 1)
-	pycodestyle {{ cookiecutter.project_slug }} --exclude="*.ipynb,*.ipynb*" --max-line-length=120 > ./tests/linting/pycodestyle.log || \
-		(cat ./tests/linting/pycodestyle.log && exit 1)
-	pydocstyle {{ cookiecutter.project_slug }} > ./tests/linting/pydocstyle.log || \
-		(cat ./tests/linting/pydocstyle.log && exit 1)
+lint: ## check style with pre-commit
+	@pre-commit run --files {{ cookiecutter.project_slug }}/* > tests/linting/pre-commit-output.txt 2>&1; \
+    if [ $$? -eq 0 ]; then \
+        echo "pre-commit passed successfully."; \
+    else \
+        echo "pre-commit failed. Please check tests/linting/pre-commit-output.txt for details."; \
+        exit 1; \
+    fi
 
 urlcheck: ## check for dead URLs
 	urlchecker check . --file-types .py,.rst,.md,.json \
@@ -68,18 +75,15 @@ test: ## run tests quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
 	pytest
 {%- else %}
-	python setup.py test
+	## add testsuite command
 {%- endif %}
-
-test-all: ## run tests on every Python version with tox
-	tox
 
 coverage: ## check code coverage quickly with the default Python
 	coverage erase
 {%- if cookiecutter.use_pytest == 'y' %}
 	coverage run --source {{ cookiecutter.project_slug }} -m pytest
 {%- else %}
-	coverage run --source {{ cookiecutter.project_slug }} bin setup.py test
+	## add testsuite command
 {%- endif %}
 	coverage combine 	# must be called in order to make coverage work in multiprocessing
 	coverage report -m
@@ -118,12 +122,11 @@ release: dist ## package and upload a release
 	twine upload dist/*
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
+	python -m build
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+	pip install .
 
 gitlab_CI_docker:  ## Build a docker image for CI use within gitlab
 	cd ./tests/CI_docker/; bash ./build_{{ cookiecutter.project_slug }}_testsuite_image.sh

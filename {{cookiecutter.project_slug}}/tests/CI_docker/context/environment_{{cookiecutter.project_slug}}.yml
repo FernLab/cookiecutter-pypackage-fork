@@ -1,51 +1,53 @@
+# SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
+# FileType: CONFIG
+# FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
 name: {{ cookiecutter.project_slug }}
 
 channels: &id1
     - conda-forge
 
 dependencies:
-    - python=3.*.*
-    - pip
-    - fastapi
-    - geojson
-    - geopandas
-    - httpx
-    - numpy
-    - python-dotenv
-    - rasterio
-    - requests
-    - shapely==1.8.2
-    - uvicorn
+  - python=3.*.*
+  - pip
+  # test requirements
+  - pytest
+  - pytest-cov
+  - urlchecker
+  - requests
+  - gevent
+  # lint requirements
+  - flake8
+  - pycodestyle
+  - pydocstyle
+  - pylint
+  # doc requirements
+  - sphinx>=4.1.1
+  - sphinx-autodoc-typehints
+  - sphinx-argparse
+  - sphinx_rtd_theme
+  - sphinx-autodoc-typehints
+  - sphinxcontrib-openapi
+  - sphinxcontrib-websupport
+  # deployment requirements
+  - python-build
+  - twine
+  # lint requirements
+  - pre-commit
+  # module requirements
+  - fastapi
+  - geojson
+  - geopandas
+  - httpx
+  - numpy
+  - python-dotenv
+  - rasterio
+  - shapely==1.8.2
+  - uvicorn
 
-    - pip:
-          # setup requirements
-          - tox
-
-          # test requirements
-          - pytest
-          - pytest-cov
-          - pytest-reporter-html1
-          - urlchecker
-          - gevent
-
-          # lint requirements
-          - flake8
-          - pycodestyle
-          - pydocstyle
-          - pylint
-
-          # doc requirements
-          - sphinx>=4.1.1
-          - sphinx-argparse
-          - sphinx_autodoc_typehints
-          - sphinx_rtd_theme
-          - sphinxcontrib-serializinghtml
-          - sphinxcontrib-websupport
-          - sphinxcontrib-httpdomain
-          - sphinxcontrib-openapi
-
-          # deployment requirements
-          - twine
-
-          # module requirements
-          - requests
+  - pip:
+    # doc requirements
+    - pytest-reporter-html1
+    - sphinxcontrib-serializinghtml
+    - sphinxcontrib-httpdomain

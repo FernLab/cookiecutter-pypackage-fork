@@ -1,4 +1,10 @@
-{% set is_open_source = cookiecutter.open_source_license != 'Not open source' -%}
+.. SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
+.. FileType: DOCUMENTATION
+.. FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
+{% set is_open_source = cookiecutter.open_source_license != 'None' -%}
 {% set group = cookiecutter.gitlab_group_or_username -%}
 {% set subgroup = cookiecutter.gitlab_subgroup_name -%}
 {% set slug = cookiecutter.project_slug -%}
@@ -24,7 +30,6 @@
 
 Status
 ------
-
 .. image:: {{ projecturl }}/badges/main/pipeline.svg
         :target: {{ projecturl }}/pipelines
         :alt: Pipelines
@@ -34,6 +39,13 @@ Status
 .. image:: https://img.shields.io/static/v1?label=Documentation&message=GitLab%20Pages&color=orange
         :target: {{ pagesurl }}/doc/
         :alt: Documentation
+
+..
+  for adding a DOI badge fill and uncomment the following:
+  image:: (link to your DOI badge svg on zenodo)
+  target: (link to your DOI on zenodo)
+  alt: DOI
+
 {% if cookiecutter.add_pyup_badge == 'y' %}
 .. image:: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/shield.svg
      :target: https://pyup.io/repos/github/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/
@@ -56,8 +68,17 @@ You can find the protocol of recent changes in the {{ cookiecutter.project_name 
 `here <{{ projecturl }}/-/blob/main/HISTORY.rst>`__.
 
 
+Developed by
+------------
+
+.. image:: ./Fernlab_Logo.svg
+     :target: https://fernlab.gfz-potsdam.de/
+     :width: 10 %
+
+{{ cookiecutter.project_slug }} has been developed by `FERN.Lab <https://fernlab.gfz-potsdam.de/>`_, the Helmholtz Innovation Lab "Remote sensing for sustainable use of resources", located at the `Helmholtz Centre Potsdam, GFZ German Research Centre for Geosciences <https://www.gfz-potsdam.de/en/>`_. FERN.Lab is funded by the `Initiative and Networking Fund of the Helmholtz Association <https://www.helmholtz.de/en/about-us/structure-and-governance/initiating-and-networking/>`_.
+
 Credits
--------
+------------
 
 This package was created with Cookiecutter_ and the `fernlab/cookiecutter-pypackage`_ project template.
 

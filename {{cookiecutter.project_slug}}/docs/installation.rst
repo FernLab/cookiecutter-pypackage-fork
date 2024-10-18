@@ -1,3 +1,9 @@
+.. SPDX-License-Identifier: {{ cookiecutter.open_source_license }}
+.. FileType: DOCUMENTATION
+.. FileCopyrightText: {% now 'utc', '%Y' %}, {{ cookiecutter.full_name }} at GFZ Potsdam
+
+
+
 {% set group = cookiecutter.gitlab_group_or_username -%}
 {% set subgroup = cookiecutter.gitlab_subgroup_name -%}
 {% set slug = cookiecutter.project_slug -%}
@@ -18,8 +24,38 @@ Using Mamba (recommended)
 
 Using mamba_ (latest version recommended), {{ cookiecutter.project_name }} is installed as follows:
 
+1. Update the base environment and install system-packages
 
-1. Clone the {{ cookiecutter.project_name }} source code and install {{ cookiecutter.project_name }} and all dependencies from the environment_{{ cookiecutter.project_slug }}.yml file:
+   .. code-block:: bash
+
+    $ apt-get update -y && \
+       echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+    $ apt-get install -y -q dialog apt-utils && \
+    $ apt-get install -y -q \
+          bzip2 \
+          curl \
+          fish \
+          gcc \
+          gdb \
+          make \
+          nano \
+          python3-pip \
+          tree \
+          wget \
+          cron \
+          zip \
+          unzip \
+          vim \
+          bash-completion \
+          git \
+          git-lfs && \
+    $ git-lfs install
+
+    $ mamba activate base
+    $ mamba update all
+
+
+2. Clone the {{ cookiecutter.project_name }} source code:
 
    .. code-block:: bash
 
@@ -27,7 +63,7 @@ Using mamba_ (latest version recommended), {{ cookiecutter.project_name }} is in
     $ cd {{ cookiecutter.project_slug }}
 
 
-2. Create virtual environment for {{ cookiecutter.project_slug }} (optional but recommended):
+3. Create virtual environment for {{ cookiecutter.project_slug }} and install all dependencies from the environment_{{ cookiecutter.project_slug }}.yml file and install {{ cookiecutter.project_name }} itself:
 
    .. code-block:: bash
 
@@ -45,8 +81,38 @@ Using Anaconda or Miniconda
 
 Using conda_ (latest version recommended), {{ cookiecutter.project_name }} is installed as follows:
 
+1. Update the base environment and install system-packages:
 
-1. Then clone the {{ cookiecutter.project_name }} source code and install {{ cookiecutter.project_name }} and all dependencies from the environment_{{ cookiecutter.project_slug }}.yml file:
+   .. code-block:: bash
+
+    $ apt-get update -y && \
+       echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections && \
+    $ apt-get install -y -q dialog apt-utils && \
+    $ apt-get install -y -q \
+          bzip2 \
+          curl \
+          fish \
+          gcc \
+          gdb \
+          make \
+          nano \
+          python3-pip \
+          tree \
+          wget \
+          cron \
+          zip \
+          unzip \
+          vim \
+          bash-completion \
+          git \
+          git-lfs && \
+    $ git-lfs install
+
+    $ conda activate base
+    $ conda update all
+
+
+2. Then clone the {{ cookiecutter.project_name }} source code:
 
    .. code-block:: bash
 
@@ -54,35 +120,13 @@ Using conda_ (latest version recommended), {{ cookiecutter.project_name }} is in
     $ cd {{ cookiecutter.project_slug }}
 
 
-1. Create virtual environment for {{ cookiecutter.project_slug }} (optional but recommended):
+3. Create virtual environment for {{ cookiecutter.project_slug }} and install all dependencies from the environment_{{ cookiecutter.project_slug }}.yml file and install {{ cookiecutter.project_name }} itself:
 
    .. code-block:: bash
 
     $ conda env create -f tests/CI_docker/context/environment_{{ cookiecutter.project_slug }}.yml
     $ conda activate {{ cookiecutter.project_slug }}
     $ pip install .
-
-
-
-Using pip (not recommended)
----------------------------
-
-It is also possible to instal {{ cookiecutter.project_name }} via `pip`_. However, please note that {{ cookiecutter.project_name }} depends on some
-open source packages that may cause problems when installed with pip. Therefore, we strongly recommend
-to resolve the following dependencies before the pip installer is run:
-
-    * TODO
-
-
-Then, the pip installer can be run by:
-
-   .. code-block:: bash
-
-    $ pip install {{ giturl }}
-
-If you don't have `pip`_ installed, this `Python installation guide`_ can guide
-you through the process.
-
 
 
 .. note::
